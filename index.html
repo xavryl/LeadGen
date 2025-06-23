@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lead Generation Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            width: 150px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #74b9ff;
+        }
+
+        /* Section 1 - Our Services (matching your image) */
+        .services-section {
+            background: #f8f9fa;
+            padding: 120px 0 80px;
+            margin-top: 60px;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .services-intro {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .service-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .service-content {
+            padding: 1.5rem;
+        }
+
+        .service-title {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .service-description {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* Section 2 - About */
+        .about-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .about-image {
+            height: 400px;
+            background: linear-gradient(45deg, #74b9ff, #0984e3);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* Section 3 - Process */
+        .process-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: #3498db;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        .step-title {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        /* Section 4 - Benefits */
+        .benefits-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .benefit-icon {
+            width: 50px;
+            height: 50px;
+            background: #3498db;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .benefit-content h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Section 5 - Contact */
+        .contact-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contact-cta {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        .contact-cta h3 {
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .contact-cta p {
+            margin-bottom: 2rem;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.6;
+        }
+
+        .btn-large {
+            padding: 1.2rem 2.5rem;
+            font-size: 1.1rem;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn {
+            background: #74b9ff;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #0984e3;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #74b9ff;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #74b9ff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #34495e;
+            padding-top: 1rem;
+            color: #bdc3c7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .services-intro {
+                font-size: 1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 1200px) and (min-width: 769px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <img src="logo.png" alt="MCL Logo" class="logo-icon">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Section 1: Our Services -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <h1 class="section-title">Our Services</h1>
+            <p class="services-intro">
+                MCL Lead Generation Services helps businesses grow through expert lead research, cold calling, sales funnel development, and CRM-based marketing. We connect you with high-value prospects, streamline outreach strategies, and enhance online visibility to drive conversions.
+            </p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image" style="background-image: linear-gradient(45deg, #74b9ff, #0984e3);"></div>
+                    <div class="service-content">
+                        <h3 class="service-title">Lead Research & List Building</h3>
+                        <p class="service-description">
+                            We specialize in high-value B2B, B2C and LinkedIn lead generation, connecting businesses with decision-makers across various industries. We provide tailored lead research and list building for private equity and venture capital firms, corporate development teams, and financial investment and marketing firms.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image" style="background-image: linear-gradient(45deg, #00b894, #00a085);"></div>
+                    <div class="service-content">
+                        <h3 class="service-title">Sales Funnel Development</h3>
+                        <p class="service-description">
+                            We design high-converting sales funnels that guide your prospects seamlessly from awareness to conversion. Our expert team crafts customized funnels that attract, engage, and nurture leads—turning them into loyal customers.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image" style="background-image: linear-gradient(45deg, #fd79a8, #e84393);"></div>
+                    <div class="service-content">
+                        <h3 class="service-title">Email Marketing</h3>
+                        <p class="service-description">
+                            We help businesses set up and optimize email marketing software like HubSpot to create effective, automated email campaigns. From configuring workflows to designing targeted email sequences, we ensure your outreach is personalized, engaging, and results-driven.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image" style="background-image: linear-gradient(45deg, #fdcb6e, #e17055);"></div>
+                    <div class="service-content">
+                        <h3 class="service-title">Cold Calling</h3>
+                        <p class="service-description">
+                            Our Cold Calling services focus on genuine human-to-human interactions that build trust and turn prospects into loyal clients. Whether you need appointment setting, follow-ups, or sales prospecting, our cold calling experts help you create strong connections and close more deals.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: About -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Our Agency</h2>
+                    <p>
+                        With over a decade of experience in lead generation, we've helped hundreds of businesses transform their sales processes and achieve remarkable growth. Our team of experts combines proven strategies to deliver results that matter.
+                    </p>
+                    <p>
+                        We understand that every business is unique, which is why we take a personalized approach to each client. From small startups to enterprise corporations, we've developed solutions that scale with your business needs and drive sustainable growth.
+                    </p>
+                    <p>
+                        Our commitment to excellence and transparent communication has made us a trusted partner for businesses across various industries. Let us help you unlock your business's full potential.
+                    </p>
+                </div>
+                <div class="about-image">
+                    <p>To be added</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Our Process -->
+    <section id="process" class="process-section">
+        <div class="container">
+            <h2 class="section-title">Our Process</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Strategy & Planning</h3>
+                    <p>We analyze your business goals and create a customized lead generation strategy tailored to your target market and objectives.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Research & Targeting</h3>
+                    <p>Our team conducts comprehensive market research to identify and target your ideal prospects with precision and accuracy.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Campaign Execution</h3>
+                    <p>We implement multi-channel campaigns including email marketing, cold calling, and social media outreach to maximize your reach.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Optimization & Results</h3>
+                    <p>Continuous monitoring and optimization ensure maximum ROI while providing detailed reports on campaign performance and results.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Benefits -->
+    <section id="benefits" class="benefits-section">
+        <div class="container">
+            <h2 class="section-title">Why Choose Us</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">📈</div>
+                    <div class="benefit-content">
+                        <h3>Increased Sales</h3>
+                        <p>Our proven strategies have helped clients increase their sales by an average of 300% within the first 6 months of partnership.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">🎯</div>
+                    <div class="benefit-content">
+                        <h3>Targeted Approach</h3>
+                        <p>We focus on quality over quantity, ensuring every lead is carefully researched and matches your ideal customer profile.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">⚡</div>
+                    <div class="benefit-content">
+                        <h3>Fast Results</h3>
+                        <p>See immediate improvements in your pipeline with our rapid deployment strategies and experienced team.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">💡</div>
+                    <div class="benefit-content">
+                        <h3>Expert Guidance</h3>
+                        <p>Our team of seasoned professionals provides ongoing support and strategic guidance throughout your journey.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">📊</div>
+                    <div class="benefit-content">
+                        <h3>Data-Driven</h3>
+                        <p>All our strategies are backed by comprehensive analytics and real-time reporting for complete transparency.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">🤝</div>
+                    <div class="benefit-content">
+                        <h3>Long-term Partnership</h3>
+                        <p>We're committed to your long-term success and work as an extension of your team to achieve sustainable growth.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Contact -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Ready to Grow Your Business?</h2>
+                    <p>Get in touch with us today and let's discuss how we can help you generate more qualified leads and increase your revenue. Our team is ready to create a customized solution for your business.</p>
+                    
+                    <div style="margin-top: 2rem;">
+                        <h3>Contact Information</h3>
+                        <p>📧 Email: ajajajja</p>
+                        <p>📞 Phone: 451125412</p>
+                        <p>📍 Address: ahhasadasd</p>
+                    </div>
+                </div>
+                
+                <div class="contact-cta">
+                    <h3>Partner with a Top-Rated Upwork Agency!</h3>
+                    <p>Hire us on Upwork or book a service directly through our website. With a 100% Job Success Score, over 200 completed contracts, and 85,000+ hours of experience, we deliver results you can trust</p>
+                    <a href="https://forms.google.com/your-form-link" target="_blank" class="btn btn-large">Partner With Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#services">Lead Research</a></li>
+                        <li><a href="#services">Sales Funnels</a></li>
+                        <li><a href="#services">Email Marketing</a></li>
+                        <li><a href="#services">Cold Calling</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#process">Our Process</a></li>
+                        <li><a href="#benefits">Why Choose Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 MCL Lead Generation Services. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

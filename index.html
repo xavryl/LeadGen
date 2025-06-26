@@ -21,6 +21,53 @@
             background: #f8f9fa;
             padding: 120px 0 80px;
             margin-top: 60px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 80vh;
+            overflow: hidden;
+        }
+
+        .home-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        .home-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .home-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 800px;
+        }
+
+        .home-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .home-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
         }
 
         .container {
@@ -233,7 +280,7 @@
 
         .benefits-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
             margin-top: 3rem;
         }
@@ -328,39 +375,7 @@
             padding: 2rem 0;
         }
 
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            color: #74b9ff;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-section ul li a {
-            color: #bdc3c7;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-section ul li a:hover {
-            color: #74b9ff;
-        }
-
         .footer-bottom {
-            border-top: 1px solid #34495e;
-            padding-top: 1rem;
             color: #bdc3c7;
         }
 
@@ -388,10 +403,26 @@
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .home-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .home-content p {
+                font-size: 1.1rem;
+            }
         }
 
         @media (max-width: 1200px) and (min-width: 769px) {
             .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .benefits-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
@@ -416,9 +447,17 @@
 
 
     <section id="home" class="home-section">
+        <!-- Replace 'your-video.mp4' with your actual video file path -->
+        <!-- <video autoplay muted loop class="home-video">
+            <source src="your-video.mp4" type="video/mp4">
+        </video> -->
+        
         <div class="container">
-            <h1>Welcome to MCL Lead Generation Services</h1>
-            <p>Your partner in driving business growth through expert lead generation and sales strategies.</p>
+            <div class="home-content">
+                <h1>Welcome to MCL Lead Generation Services</h1>
+                <p>Your partner in driving business growth through expert lead generation and sales strategies.</p>
+                <a href="#contact" class="btn btn-large">Get Started Today</a>
+            </div>
         </div>
     </section>
 
@@ -479,15 +518,12 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <h2>About Our Agency</h2>
+                    <h2>About Our Company</h2>
                     <p>
-                        With over a decade of experience in lead generation, we've helped hundreds of businesses transform their sales processes and achieve remarkable growth. Our team of experts combines proven strategies to deliver results that matter.
+                        <strong>MCL Lead Generation Services</strong> delivers high-value B2B leads by connecting businesses with decision-makers through customized lead research, data mining, and enrichment. We support startups, agencies, financial advisors, and investment firms targeting mid to large enterprises, distressed businesses, or acquisition opportunities.
                     </p>
                     <p>
-                        We understand that every business is unique, which is why we take a personalized approach to each client. From small startups to enterprise corporations, we've developed solutions that scale with your business needs and drive sustainable growth.
-                    </p>
-                    <p>
-                        Our commitment to excellence and transparent communication has made us a trusted partner for businesses across various industries. Let us help you unlock your business's full potential.
+                        As a Top Rated Plus Upwork agency with a 100% job success score, we handle large contracts with top performance. Our expertise spans across industries, helping clients identify and connect with key prospects that drive meaningful business growth.
                     </p>
                 </div>
                 <div class="about-image">
@@ -535,14 +571,6 @@
             <h2 class="section-title">Why Choose Us</h2>
             <div class="benefits-grid">
                 <div class="benefit-item">
-                    <div class="benefit-icon">📈</div>
-                    <div class="benefit-content">
-                        <h3>Increased Sales</h3>
-                        <p>Our proven strategies have helped clients increase their sales by an average of 300% within the first 6 months of partnership.</p>
-                    </div>
-                </div>
-                
-                <div class="benefit-item">
                     <div class="benefit-icon">🎯</div>
                     <div class="benefit-content">
                         <h3>Targeted Approach</h3>
@@ -559,18 +587,10 @@
                 </div>
                 
                 <div class="benefit-item">
-                    <div class="benefit-icon">💡</div>
-                    <div class="benefit-content">
-                        <h3>Expert Guidance</h3>
-                        <p>Our team of seasoned professionals provides ongoing support and strategic guidance throughout your journey.</p>
-                    </div>
-                </div>
-                
-                <div class="benefit-item">
                     <div class="benefit-icon">📊</div>
                     <div class="benefit-content">
                         <h3>Data-Driven</h3>
-                        <p>All our strategies are backed by comprehensive analytics and real-time reporting for complete transparency.</p>
+                        <p>All our strategies are backed by comprehensive, data-driven research to ensure precise targeting across B2B, B2C, and D2C markets. We specialize in tailored lead sourcing, data enrichment, and outreach support—connecting businesses with key decision-makers and high-potential prospects.</p>
                     </div>
                 </div>
                 
@@ -613,47 +633,6 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Services</h3>
-                    <ul>
-                        <li><a href="#services">Lead Research</a></li>
-                        <li><a href="#services">Sales Funnels</a></li>
-                        <li><a href="#services">Email Marketing</a></li>
-                        <li><a href="#services">Cold Calling</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Company</h3>
-                    <ul>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#process">Our Process</a></li>
-                        <li><a href="#benefits">Why Choose Us</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Resources</h3>
-                    <ul>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Testimonials</a></li>
-                        <li><a href="#">FAQ</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Follow Us</h3>
-                    <ul>
-                        <li><a href="#">LinkedIn</a></li>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Instagram</a></li>
-                    </ul>
-                </div>
-            </div>
-            
             <div class="footer-bottom">
                 <p>&copy; 2025 MCL Lead Generation Services. All rights reserved.</p>
             </div>

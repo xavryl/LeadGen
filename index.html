@@ -431,36 +431,248 @@
             animation: float 6s ease-in-out infinite 4.5s;
         }
 
-        /* Section 5 - Contact */
+        /* NEW SECTION - Join Our Company */
+        .join-section {
+            padding: 100px 0;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .join-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.05), rgba(255, 235, 59, 0.05));
+            z-index: 1;
+        }
+
+        .join-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .join-content h2 {
+            font-size: 3rem;
+            color: #133c55;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .join-content p {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 3rem;
+        }
+
+        .join-highlights {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .join-highlight {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .join-highlight:hover {
+            transform: translateY(-5px);
+        }
+
+        .join-highlight-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ffc107, #ffeb3b);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+        }
+
+        .join-highlight h3 {
+            color: #133c55;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .join-highlight p {
+            color: #666;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .btn-yellow {
+            background: linear-gradient(135deg, #ffc107, #ffeb3b);
+            color: #333;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 8px 25px rgba(255, 193, 7, 0.3);
+        }
+
+        .btn-yellow:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 193, 7, 0.4);
+            background: linear-gradient(135deg, #ffeb3b, #ffc107);
+        }
+
+        /* REDESIGNED CONTACT SECTION */
         .contact-section {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #133c55, #386fa4);
+            padding: 100px 0;
+            background: linear-gradient(135deg, #133c55 0%, #1e5f74 50%, #386fa4 100%);
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M50 0C22.386 0 0 22.386 0 50s22.386 50 50 50 50-22.386 50-50S77.614 0 50 0z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-header h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .contact-header p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
         }
 
         .contact-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
+            align-items: stretch;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-info-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 3rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .contact-info-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .contact-info-card p {
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        .contact-details {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .contact-details li {
+            display: flex;
             align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 0.5rem 0;
+        }
+
+        .contact-details .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .contact-details a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            color: white;
         }
 
         .contact-cta {
-            background: rgba(255,255,255,0.1);
-            padding: 2rem;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 3rem;
             text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-cta:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
         }
 
         .contact-cta h3 {
+            font-size: 1.5rem;
             margin-bottom: 1rem;
             color: white;
         }
 
         .contact-cta p {
             margin-bottom: 2rem;
-            color: rgba(255,255,255,0.9);
+            color: rgba(255, 255, 255, 0.9);
             line-height: 1.6;
         }
 
@@ -476,10 +688,11 @@
             color: white;
             padding: 1rem 2rem;
             border: none;
-            border-radius: 5px;
+            border-radius: 50px;
             cursor: pointer;
             font-size: 1rem;
             transition: all 0.3s ease;
+            font-weight: 600;
         }
 
         .btn:hover {
@@ -543,6 +756,19 @@
                 text-align: center;
                 gap: 1rem;
             }
+
+            .join-highlights {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .join-content h2 {
+                font-size: 2rem;
+            }
+
+            .contact-header h2 {
+                font-size: 2rem;
+            }
         }
 
         @media (max-width: 1200px) and (min-width: 769px) {
@@ -551,6 +777,11 @@
             }
 
             .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .join-highlights {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
@@ -584,11 +815,11 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#process">Process</a></li>
                 <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#join">Join Us</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
-
 
     <section id="home" class="home-section">
         <!-- Replace 'your-video.mp4' with your actual video file path -->
@@ -757,25 +988,74 @@
         </div>
     </section>
 
-    <!-- Section 5: Contact -->
+    <!-- NEW SECTION: Want to Join Our Company? -->
+    <section id="join" class="join-section">
+        <div class="container">
+            <div class="join-content">
+                <h2>Want to Join Our Company?</h2>
+                <p>
+                    Be part of a dynamic team that's transforming how businesses connect with their ideal customers. We're looking for passionate professionals who want to make a real impact in the lead generation industry.
+                </p>
+                
+                <div class="join-highlights">
+                    <div class="join-highlight">
+                        <div class="join-highlight-icon">🚀</div>
+                        <h3>Growth Opportunities</h3>
+                        <p>Advance your career with unlimited growth potential in a rapidly expanding company.</p>
+                    </div>
+                    
+                    <div class="join-highlight">
+                        <div class="join-highlight-icon">🏆</div>
+                        <h3>Top-Rated Team</h3>
+                        <p>Work alongside industry experts in a Top Rated Plus Upwork agency environment.</p>
+                    </div>
+                    
+                    <div class="join-highlight">
+                        <div class="join-highlight-icon">💼</div>
+                        <h3>Remote Flexibility</h3>
+                        <p>Enjoy the freedom of remote work while collaborating with a global team of professionals.</p>
+                    </div>
+                </div>
+                
+                <a href="https://careers.mclleads.com" class="btn-yellow">Apply Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Contact (Redesigned) -->
     <section id="contact" class="contact-section">
         <div class="container">
+            <div class="contact-header">
+                <h2>Ready to Grow Your Business?</h2>
+                <p>Partner with a proven team that delivers results. Let's discuss how we can accelerate your growth with targeted lead generation strategies.</p>
+            </div>
+            
             <div class="contact-content">
-                <div class="contact-info">
-                    <h2>Ready to Grow Your Business?</h2>
-                    <p>Get in touch with us today and let's discuss how we can help you generate more qualified leads and increase your revenue. Our team is ready to create a customized solution for your business.</p>
+                <div class="contact-info-card">
+                    <h3>Get in Touch</h3>
+                    <p>Ready to take your business to the next level? Our team of experts is here to create a customized lead generation solution that drives real results for your company.</p>
                     
-                    <div style="margin-top: 2rem;">
-                        <h3>Contact Information</h3>
-                        <p>📧 Email: tina@mclleads.com</p>
-                        <p><a href="https://www.upwork.com/agencies/655437511724298240/" target="_blank">📧 Find us on Upwork</a></p>
-
-                    </div>
+                    <ul class="contact-details">
+                        <li>
+                            <div class="contact-icon">📧</div>
+                            <div>
+                                <strong>Email:</strong><br>
+                                <a>tina@mclleads.com</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contact-icon">🔗</div>
+                            <div>
+                                <strong>Upwork Agency:</strong><br>
+                                <a href="https://www.upwork.com/agencies/655437511724298240/" target="_blank">View Our Profile</a>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
                 
                 <div class="contact-cta">
                     <h3>Partner with a Top-Rated Upwork Agency!</h3>
-                    <p>Hire us on Upwork or book a service directly through our website. With a 100% Job Success Score, over 200 completed contracts, and 85,000+ hours of experience, we deliver results you can trust</p>
+                    <p>Hire us on Upwork or book a service directly through our website. With a 100% Job Success Score, over 200 completed contracts, and 85,000+ hours of experience, we deliver results you can trust.</p>
                     <a href="https://www.upwork.com/freelancers/macristinaplao" target="_blank" class="btn btn-large">Partner With Us</a>
                 </div>
             </div>

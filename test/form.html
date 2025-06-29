@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Section Redesign</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .contact-info-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: slideIn 0.8s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-info-card p {
+            font-size: 1.1rem;
+            color: #4a5568;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-details {
+            list-style: none;
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-details li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .contact-details li:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 12px;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .contact-details strong {
+            color: #2d3748;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-details a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            color: #764ba2;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            background: linear-gradient(135deg, #5a6fd8, #6b42a0);
+        }
+
+        .quote-btn {
+            width: 100%;
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            padding: 1.2rem 2rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            margin: 2rem;
+            padding: 0;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            animation: slideUp 0.4s ease;
+            position: relative;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .close {
+            position: absolute;
+            right: 1.5rem;
+            top: 1.5rem;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #666;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .close:hover {
+            background: rgba(0, 0, 0, 0.1);
+            transform: rotate(90deg);
+        }
+
+        .quote-form {
+            padding: 3rem;
+            padding-top: 4rem;
+        }
+
+        .quote-form h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .form-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-methods {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-method {
+            flex: 1;
+        }
+
+        .contact-method h4 {
+            color: #4a5568;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .contact-method a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .social-icon {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: #0077b5;
+            border-radius: 4px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            flex: 1;
+        }
+
+        .form-group.full-width {
+            flex: none;
+            width: 100%;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #4a5568;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 1rem;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            background: linear-gradient(135deg, #5a6fd8, #6b42a0);
+        }
+
+        @media (max-width: 768px) {
+            .contact-info-card {
+                padding: 2rem;
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .contact-methods {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .quote-form {
+                padding: 2rem;
+                padding-top: 3rem;
+            }
+
+            h3, .quote-form h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-content">
+        <div class="contact-info-card">
+            <h3>Get in Touch</h3>
+            <p>Ready to take your business to the next level? Our team of experts is here to create a customized lead generation solution that drives real results for your company.</p>
+            
+            <ul class="contact-details">
+                <li>
+                    <div class="contact-icon">📧</div>
+                    <div>
+                        <strong>Email:</strong>
+                        <a href="mailto:tina@mclleads.com">tina@mclleads.com</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="contact-icon">🔗</div>
+                    <div>
+                        <strong>Upwork Agency:</strong>
+                        <a href="https://www.upwork.com/agencies/655437511724298240/" target="_blank" class="btn" style="margin-top: 0.5rem; padding: 0.8rem 1.5rem; font-size: 0.9rem;">View Our Profile</a>
+                    </div>
+                </li>
+            </ul>
+            
+            <button class="btn quote-btn" onclick="openModal()">Get a Quote</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="quoteModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="quote-form">
+                <div class="form-header">
+                    <h2>Let's Chat</h2>
+                </div>
+
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <h4>Email</h4>
+                        <a href="mailto:campaign@strive-digital.com">campaign@strive-digital.com</a>
+                    </div>
+                    <div class="contact-method">
+                        <h4>Social Media</h4>
+                        <div class="social-icon"></div>
+                    </div>
+                </div>
+
+                <form id="quoteForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="businessEmail">Business Email *</label>
+                            <input type="email" id="businessEmail" name="businessEmail" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="companyName">Company Name *</label>
+                            <input type="text" id="companyName" name="companyName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="companyWebsite">Company Website *</label>
+                            <input type="url" id="companyWebsite" name="companyWebsite" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="helpNeeded">What do you need help with? *</label>
+                        <textarea id="helpNeeded" name="helpNeeded" placeholder="Tell us about your project, goals, and how we can help..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            const modal = document.getElementById('quoteModal');
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('quoteModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('quoteModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Form submission
+        document.getElementById('quoteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Here you would typically send the data to your server
+            console.log('Form submitted:', data);
+            
+            // Show success message (you can customize this)
+            alert('Thank you for your message! We\'ll get back to you soon.');
+            
+            // Close modal and reset form
+            closeModal();
+            this.reset();
+        });
+    </script>
+</body>
+</html>

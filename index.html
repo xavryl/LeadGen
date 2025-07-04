@@ -130,130 +130,281 @@
         }
 
         /* Section 1 - Our Services (matching your image) */
-        .services-section {
-    background-image: url('/man.png'); /* Replace with your background */
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: 120px 0 80px;
-    position: relative;
-}
-
-        .section-title {
-            font-size: 3rem;
-            text-align: center;
-            color: #133c55;
-            margin-bottom: 2rem;
-            font-weight: 300;
-        }
-
-        .services-intro {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto 4rem;
-            font-size: 1.1rem;
-            color: #666;
-            line-height: 1.8;
-        }
-
-        .services-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 2rem;
-    margin-top: 3rem;
-}
-
-        .service-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(19, 60, 85, 0.1);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          .section_services {
+            background: url('/man.png');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 120px 0 80px;
             position: relative;
+            overflow: hidden;
         }
 
-        .service-card::before {
+        .section_services::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(19, 60, 85, 0.05), rgba(56, 111, 164, 0.05));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
+            background: linear-gradient(135deg, rgba(19, 60, 85, 0.8), rgba(56, 111, 164, 0.6));
+            z-index: 1;
         }
 
-        .service-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(19, 60, 85, 0.2);
-        }
-
-        .service-card:hover::before {
-            opacity: 1;
-        }
-
-        .service-image {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-            transition: transform 0.4s ease;
-        }
-
-        .service-card:hover .service-image {
-            transform: scale(1.1);
-        }
-
-        .service-content {
-            padding: 1.5rem;
+        .section_container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
             position: relative;
             z-index: 2;
         }
 
-        .service-title {
-            font-size: 1.3rem;
+        .section_intro_card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 50px;
+            border-radius: 25px;
+            max-width: 900px;
+            margin: 0 auto 60px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .section_title {
+            font-size: 3.5rem;
+            color: #133c55;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            letter-spacing: -1px;
+        }
+
+        .section_intro_text {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .section_primary_btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #133c55, #386fa4);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(19, 60, 85, 0.3);
+        }
+
+        .section_primary_btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(19, 60, 85, 0.4);
+        }
+
+        .section_tabs_container {
+            margin-top: 60px;
+        }
+
+        .section_tab_buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .section_tab_button {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 15px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 1rem;
+            backdrop-filter: blur(10px);
+            white-space: nowrap;
+        }
+
+        .section_tab_button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .section_tab_button.active {
+            background: white;
+            color: #133c55;
+            border-color: white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .section_tab_content {
+            position: relative;
+            min-height: 400px;
+        }
+
+        .section_service_card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            height: 400px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            pointer-events: none;
+        }
+
+        .section_service_card.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .section_card_image {
+            width: 50%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section_card_image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(19, 60, 85, 0.8), rgba(56, 111, 164, 0.6));
+            z-index: 1;
+        }
+
+        .section_card_content {
+            width: 50%;
+            padding: 40px;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .section_card_icon {
+            font-size: 3rem;
+            color: #386fa4;
+            margin-bottom: 1.5rem;
+        }
+
+        .section_card_title {
+            font-size: 1.8rem;
             color: #133c55;
             margin-bottom: 1rem;
             font-weight: 600;
-            transition: color 0.3s ease;
         }
 
-        .service-card:hover .service-title {
-            color: #386fa4;
-        }
-
-        .service-description {
+        .section_card_description {
             color: #666;
-            line-height: 1.6;
-            font-size: 0.95rem;
+            line-height: 1.7;
+            font-size: 1rem;
+            margin-bottom: 2rem;
         }
 
+        .section_card_btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #59a5d8, #91c7f7);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(89, 165, 216, 0.3);
+        }
 
-        .intro-card {
-    background: rgba(255, 255, 255, 0.8);
-    padding: 40px;
-    border-radius: 20px;
-    max-width: 900px;
-    margin: 0 auto 4rem;
-    text-align: center;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-}
+        .section_card_btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(89, 165, 216, 0.4);
+        }
 
-.section-title {
-    font-size: 3rem;
-    color: #133c55;
-    margin-bottom: 1.5rem;
-    font-weight: 300;
-}
+        .section_service_card:nth-child(1) .section_card_image {
+            background: linear-gradient(135deg, #133c55, #386fa4);
+        }
 
-.services-intro {
-    font-size: 1.1rem;
-    color: #666;
-    line-height: 1.8;
-    margin: 0 auto;
-}
+        .section_service_card:nth-child(2) .section_card_image {
+            background: linear-gradient(135deg, #1e5f74, #59a5d8);
+        }
+
+        .section_service_card:nth-child(3) .section_card_image {
+            background: linear-gradient(135deg, #386fa4, #59a5d8);
+        }
+
+        .section_service_card:nth-child(4) .section_card_image {
+            background: linear-gradient(135deg, #59a5d8, #91c7f7);
+        }
+
+        .section_service_card:nth-child(5) .section_card_image {
+            background: linear-gradient(135deg, #91c7f7, #bee1ff);
+        }
+
+        @media (max-width: 768px) {
+            .section_services {
+                padding: 80px 0 60px;
+            }
+
+            .section_intro_card {
+                padding: 30px;
+                margin: 0 auto 40px;
+            }
+
+            .section_title {
+                font-size: 2.5rem;
+            }
+
+            .section_tab_buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .section_tab_button {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+
+            .section_service_card {
+                flex-direction: column;
+                height: auto;
+                min-height: 500px;
+                position: relative;
+            }
+
+            .section_card_image,
+            .section_card_content {
+                width: 100%;
+            }
+
+            .section_card_image {
+                height: 200px;
+            }
+
+            .section_card_content {
+                padding: 30px;
+            }
+
+            .section_tab_content {
+                min-height: 500px;
+            }
+        }
         /* Section 2 - About */
         .about-section {
             padding: 80px 0;
@@ -315,6 +466,14 @@
 }
 
         /* Section 3 - Process */
+        .process_section-title {
+            font-size: 3.5rem;
+            color: #283e5a;
+            font-weight: 300;
+            letter-spacing: -1px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
         .process-section {
         padding: 80px 0;
         background-image: url('/city.png'); /* Replace with your image path */
@@ -425,6 +584,19 @@
 }
 
         /* Section 4 - Benefits (New Design) */
+
+
+
+        .Benefit_section-title {
+            font-size: 3.5rem;
+            color: #ffffff;
+            font-weight: 300;
+            letter-spacing: -1px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+
         .benefits-section {
             padding: 100px 0;
             background: linear-gradient(135deg, #133c55 0%, #1e5f74 50%, #386fa4 100%);
@@ -1830,72 +2002,113 @@
     </section>
 
     <!-- Section 1: Our Services -->
-    <section id="services" class="services-section">
-         <div class="container">
-        <div class="intro-card">
-            <h1 class="section-title">Our Services</h1>
-            <p class="services-intro">
-                MCL Lead Generation Services helps businesses grow through expert lead research, cold calling, sales funnel development, and CRM-based marketing. We connect you with high-value prospects, streamline outreach strategies, and enhance online visibility to drive conversions.
-            </p>
-            <div class="hero-buttons">
-            <a href="https://exclusive.mclleads.com " class="btn-primary">Get My Custom Plan</a>
-          
-        </div>
-        </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-image" style="background-image: linear-gradient(45deg, #133c55, #386fa4);"></div>
-                    <div class="service-content">
-                        <h3 class="service-title">Lead Research & List Building</h3>
-                        <p class="service-description">
-                            We specialize in high-value B2B, B2C and LinkedIn lead generation, connecting businesses with decision-makers across various industries. We provide tailored lead research and list building for private equity and venture capital firms, corporate development teams, and financial investment and marketing firms.
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-image" style="background-image: linear-gradient(45deg, #1e5f74, #59a5d8);"></div>
-                    <div class="service-content">
-                        <h3 class="service-title">Sales Funnel Development</h3>
-                        <p class="service-description">
-                            We design high-converting sales funnels that guide your prospects seamlessly from awareness to conversion. Our expert team crafts customized funnels that attract, engage, and nurture leads—turning them into loyal customers.
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-image" style="background-image: linear-gradient(45deg, #386fa4, #59a5d8);"></div>
-                    <div class="service-content">
-                        <h3 class="service-title">Email Marketing</h3>
-                        <p class="service-description">
-                            We help businesses set up and optimize email marketing software like HubSpot to create effective, automated email campaigns. From configuring workflows to designing targeted email sequences, we ensure your outreach is personalized, engaging, and results-driven.
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-image" style="background-image: linear-gradient(45deg, #59a5d8, #91c7f7);"></div>
-                    <div class="service-content">
-                        <h3 class="service-title">Cold Calling</h3>
-                        <p class="service-description">
-                            Our Cold Calling services focus on genuine human-to-human interactions that build trust and turn prospects into loyal clients. Whether you need appointment setting, follow-ups, or sales prospecting, our cold calling experts help you create strong connections and close more deals.
-                        </p>
-                    </div>
+    <section class="section_services">
+        <div class="section_container">
+            <div class="section_intro_card">
+                <h1 class="section_title">Our Services</h1>
+                <p class="section_intro_text">
+                    MCL Lead Generation Services helps businesses grow through expert lead research, cold calling, sales funnel development, and CRM-based marketing. We connect you with high-value prospects, streamline outreach strategies, and enhance online visibility to drive conversions.
+                </p>
+                <a href="https://exclusive.mclleads.com" class="section_primary_btn">Get My Custom Plan</a>
+            </div>
+
+            <div class="section_tabs_container">
+                <div class="section_tab_buttons">
+                    <button class="section_tab_button active" onclick="showTab(0)">Lead Research</button>
+                    <button class="section_tab_button" onclick="showTab(1)">Sales Funnel</button>
+                    <button class="section_tab_button" onclick="showTab(2)">Email Marketing</button>
+                    <button class="section_tab_button" onclick="showTab(3)">Cold Calling</button>
+                    <button class="section_tab_button" onclick="showTab(4)">Virtual Assistant</button>
                 </div>
 
-                <div class="service-card">
-                    <div class="service-image" style="background-image: linear-gradient(45deg, #59a5d8, #91c7f7);"></div>
-                    <div class="service-content">
-                        <h3 class="service-title">Virtual Assistant Support</h3>
-                        <p class="service-description">
-                            We offer Virtual Assistant (VA) support tailored to your industry and niche. Whether you need an eCommerce VA, Real Estate VA, Social Media VA, Executive VA, or Marketing VA, our skilled team is ready to assist. From administrative tasks to customer service and operational support, our VAs help streamline your workflow—allowing you to focus on growth and strategy.
-                        </p>
+                <div class="section_tab_content">
+                    <div class="section_service_card active">
+                        <div class="section_card_image"></div>
+                        <div class="section_card_content">
+                            <div class="section_card_icon">📊</div>
+                            <h3 class="section_card_title">Lead Research & List Building</h3>
+                            <p class="section_card_description">
+                                We specialize in high-value B2B, B2C and LinkedIn lead generation, connecting businesses with decision-makers across various industries. We provide tailored lead research and list building for private equity and venture capital firms, corporate development teams, and financial investment and marketing firms.
+                            </p>
+                            <a href="#" class="section_card_btn">Get Custom Lead Lists Now</a>
+                        </div>
+                    </div>
+
+                    <div class="section_service_card">
+                        <div class="section_card_image"></div>
+                        <div class="section_card_content">
+                            <div class="section_card_icon">⚡</div>
+                            <h3 class="section_card_title">Sales Funnel Development</h3>
+                            <p class="section_card_description">
+                                We design high-converting sales funnels that guide your prospects seamlessly from awareness to conversion. Our expert team crafts customized funnels that attract, engage, and nurture leads—turning them into loyal customers.
+                            </p>
+                            <a href="#" class="section_card_btn">Get a Custom Funnel Built for You</a>
+                        </div>
+                    </div>
+
+                    <div class="section_service_card">
+                        <div class="section_card_image"></div>
+                        <div class="section_card_content">
+                            <div class="section_card_icon">✉️</div>
+                            <h3 class="section_card_title">Hire an Email Marketing Expert</h3>
+                            <p class="section_card_description">
+                                We help businesses set up and optimize email marketing software like HubSpot to create effective, automated email campaigns. From configuring workflows to designing targeted email sequences, we ensure your outreach is personalized, engaging, and results-driven.
+                            </p>
+                            <a href="#" class="section_card_btn">Hire an Email Marketing Expert</a>
+                        </div>
+                    </div>
+
+                    <div class="section_service_card">
+                        <div class="section_card_image"></div>
+                        <div class="section_card_content">
+                            <div class="section_card_icon">📞</div>
+                            <h3 class="section_card_title">Cold Calling</h3>
+                            <p class="section_card_description">
+                                Our Cold Calling services focus on genuine human-to-human interactions that build trust and turn prospects into loyal clients. Whether you need appointment setting, follow-ups, or sales prospecting, our cold calling experts help you create strong connections and close more deals.
+                            </p>
+                            <a href="#" class="section_card_btn">Hire a Cold Caller</a>
+                        </div>
+                    </div>
+
+                    <div class="section_service_card">
+                        <div class="section_card_image"></div>
+                        <div class="section_card_content">
+                            <div class="section_card_icon">🤖</div>
+                            <h3 class="section_card_title">Virtual Assistant Support</h3>
+                            <p class="section_card_description">
+                                We offer Virtual Assistant (VA) support tailored to your industry and niche. Whether you need an eCommerce VA, Real Estate VA, Social Media VA, Executive VA, or Marketing VA, our skilled team is ready to assist. From administrative tasks to customer service and operational support, our VAs help streamline your workflow—allowing you to focus on growth and strategy.
+                            </p>
+                            <a href="#" class="section_card_btn">Request a Niche-Based VA</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <script>
+        let currentTab = 0;
+        const tabButtons = document.querySelectorAll('.section_tab_button');
+        const serviceCards = document.querySelectorAll('.section_service_card');
+
+        function showTab(index) {
+            // Remove active class from all buttons and cards
+            tabButtons.forEach(button => button.classList.remove('active'));
+            serviceCards.forEach(card => card.classList.remove('active'));
+
+            // Add active class to selected button and card
+            tabButtons[index].classList.add('active');
+            serviceCards[index].classList.add('active');
+
+            currentTab = index;
+        }
+
+        // Auto-cycle through tabs every 8 seconds
+        setInterval(() => {
+            currentTab = (currentTab + 1) % serviceCards.length;
+            showTab(currentTab);
+        }, 8000);
+    </script>
     <!-- Section 2: About -->
     <section id="about" class="about-section">
         <div class="container">
@@ -1920,7 +2133,7 @@
     <!-- Section 3: Our Process -->
     <section id="process" class="process-section">
         <div class="container">
-            <h2 class="section-title">Our Process</h2>
+            <h2 class="process_section-title">Our Process</h2>
             <div class="process-steps">
                 <div class="process-step">
                     <div class="step-number">1</div>
@@ -1952,7 +2165,7 @@
     <!-- Section 4: Benefits (Redesigned) -->
     <section id="benefits" class="benefits-section">
         <div class="container">
-            <h2 class="section-title">Why Choose Us</h2>
+            <h2 class="Benefit_section-title">Why Choose Us</h2>
             <div class="benefits-grid">
                 <div class="benefit-card">
                     <div class="benefit-header">

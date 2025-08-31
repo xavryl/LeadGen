@@ -83,7 +83,7 @@
             </div>
           </div>
           <div class="hero-buttons">
-        <a href="#" class="btn-primary" onclick="openBankruptcyModal()">
+        <a href="#" class="btn-primary" onclick="openBankruptcyModal(); return false;">
             Get a Free Sample Now – Bankruptcy Daily Bulletin
         </a>
     </div>
@@ -93,7 +93,7 @@
             <button class="close-btn_modal2" onclick="closeBankruptcyModal()">&times;</button>
             
             <div class="form-header_modal2">
-                <h2 class="form-title_modal2">Sample Daily Bulletin</h2>
+                <h2 class="form-title_modal2">Bankruptcy Daily Bulletin</h2>
                 <p class="form-subtitle_modal2">For dealmakers, investors & lead gen pros</p>
             </div>
             
@@ -130,22 +130,31 @@
 
     <script>
         function openBankruptcyModal() {
-            document.getElementById("bankruptcyModal_modal2").classList.add("show_modal2");
+            const modal = document.getElementById("bankruptcyModal_modal2");
+            modal.classList.add("show_modal2");
             document.body.style.overflow = "hidden";
+            return false;
         }
 
         function closeBankruptcyModal() {
-            document.getElementById("bankruptcyModal_modal2").classList.remove("show_modal2");
+            const modal = document.getElementById("bankruptcyModal_modal2");
+            modal.classList.remove("show_modal2");
             document.body.style.overflow = "auto";
         }
 
         // Close modal when clicking outside
-        window.onclick = function (event) {
+        document.addEventListener('click', function (event) {
             const modal = document.getElementById("bankruptcyModal_modal2");
             if (event.target === modal) {
                 closeBankruptcyModal();
             }
-        };
+        });
+
+        // Prevent modal from showing on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById("bankruptcyModal_modal2");
+            modal.classList.remove("show_modal2");
+        });
 
         document.getElementById("bankruptcyForm_modal2").addEventListener("submit", function (event) {
             event.preventDefault();
@@ -168,12 +177,12 @@
             };
 
             // Log the data to check for any issues (remove this in production)
-            console.log("Sample form data being sent:", parms);
+            console.log("Bankruptcy form data being sent:", parms);
 
             // Send with EmailJS - using your service ID
-            emailjs.send("service_68f3mgg", "template_491mnyv", parms).then(
+            emailjs.send("service_68f3mgg", "template_bankruptcy", parms).then(
                 function (response) {
-                    submitBtn.textContent = "Request Sent! ✓";
+                    submitBtn.textContent = "Sample Sent! ✓";
                     submitBtn.style.background = "linear-gradient(135deg, #28a745 0%, #20c997 100%)";
 
                     setTimeout(() => {

@@ -1,0 +1,14 @@
+.site-footer {
+  background-color: #0f172a; /* Slightly darker than Navy */
+  color: #94a3b8;
+  padding: 40px 0;
+  text-align: center;
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}

@@ -1,0 +1,160 @@
+/* Base Header Styles */
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 1.2rem 0;
+}
+
+/* State 1: Transparent (Top of page) */
+.header.transparent {
+  background: transparent;
+  box-shadow: none;
+  padding: 1.5rem 0; /* Slightly taller at the top */
+}
+
+/* State 2: Scrolled (Glassmorphism) */
+.header.scrolled {
+  background: rgba(19, 60, 85, 0.9); /* #133c55 with opacity */
+  backdrop-filter: blur(12px); /* The "Slick" Blur Effect */
+  padding: 0.8rem 0; /* Compact on scroll */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+  max-width: 1400px; /* Wider container for modern look */
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.logo img {
+  height: 45px;
+  object-fit: contain;
+  transition: height 0.3s ease;
+}
+
+.header.scrolled .logo img {
+  height: 35px; /* Shrink logo slightly on scroll */
+}
+
+/* Navigation Wrapper */
+.nav-menu-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+/* Modern Link Styling */
+.nav-link {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  position: relative;
+  padding: 5px 0;
+}
+
+/* Animated Underline Effect */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #ffc107; /* Brand Yellow */
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: white;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Header CTA Button */
+.btn-header {
+  background: white;
+  color: #133c55;
+  padding: 0.7rem 1.8rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.btn-header:hover {
+  background: #ffc107; /* Yellow on hover */
+  color: #133c55;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 193, 7, 0.3);
+}
+
+/* Mobile Toggle */
+.mobile-toggle {
+  display: none;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 992px) {
+  .mobile-toggle {
+    display: block;
+    z-index: 1001;
+  }
+
+  /* Full Screen Mobile Menu */
+  .nav-menu-wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 100%;
+    background: #133c55;
+    flex-direction: column;
+    justify-content: center;
+    transform: translateX(100%); /* Hidden by default */
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    gap: 2rem;
+  }
+
+  .nav-menu-wrapper.active {
+    transform: translateX(0); /* Slide in */
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-link {
+    font-size: 1.5rem; /* Larger text on mobile */
+  }
+
+  /* Disable glass effect on mobile when menu is open */
+  .header.scrolled .nav-menu-wrapper {
+    background: #133c55; 
+  }
+}

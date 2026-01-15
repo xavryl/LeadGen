@@ -1,0 +1,141 @@
+/* =========================================
+   1. GLOBAL RESET & LAYOUT
+   ========================================= */
+/* Removes default Vite margins/padding that prevent full-width layouts */
+:root {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden; /* Prevents horizontal scroll from animations */
+}
+
+/* Important: This overrides the default Vite center alignment */
+#root {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.app {
+  width: 100%;
+  position: relative;
+}
+
+/* =========================================
+   2. MODAL STYLES
+   ========================================= */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Navy Blue transparent background */
+  background: rgba(19, 60, 85, 0.9); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000; /* High z-index to sit on top of everything */
+  backdrop-filter: blur(5px); /* Frosted glass effect behind modal */
+  padding: 20px;
+}
+
+.modal-content {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+  animation: slideUp 0.3s ease-out;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-header h2 {
+  color: #133c55;
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #64748b;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+
+.close-btn:hover {
+  color: #ffc107;
+}
+
+.modal-body p {
+  color: #64748b;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.modal-input {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  box-sizing: border-box; /* Ensures padding doesn't break width */
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+
+.modal-input:focus {
+  border-color: #133c55;
+}
+
+.btn-modal-submit {
+  background: #ffc107;
+  color: #133c55;
+  font-weight: 700;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 50px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.btn-modal-submit:hover {
+  background: #ffca2c;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255, 193, 7, 0.3);
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(50px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}

@@ -1,0 +1,378 @@
+/* =========================================
+   1. BASE SECTION STYLES
+   ========================================= */
+.services-section {
+  background-color: #133c55; /* Deep Blue Background */
+  padding: 100px 0;
+  overflow: hidden;
+  color: white;
+}
+
+.services-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header Typography */
+.services-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-tag {
+  color: #ffc107; /* Gold Tag */
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: white;
+  margin: 0 0 10px 0;
+}
+
+.section-subtitle {
+  color: #cbd5e1; /* Light Gray */
+  font-size: 1.1rem;
+}
+
+/* Helpers for Responsive Visibility */
+.desktop-only { display: block; }
+.mobile-only { display: none; }
+
+
+/* =========================================
+   2. DESKTOP FEATURE DECK LAYOUT
+   ========================================= */
+.feature-deck {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  min-height: 500px;
+}
+
+/* --- LEFT SIDE: MENU LIST --- */
+.deck-menu {
+  flex: 0 0 350px; /* Fixed width sidebar */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.menu-item {
+  /* Glassmorphism for Inactive Items */
+  background: rgba(255, 255, 255, 0.05);
+  padding: 25px 30px;
+  border-radius: 16px;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 5px solid transparent;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-item-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.menu-icon {
+  font-size: 1.4rem;
+  color: #94a3b8; /* Dimmed Icon */
+  display: flex;
+  align-items: center;
+  transition: color 0.3s;
+}
+
+.menu-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7); /* Dimmed Text */
+  flex-grow: 1;
+  transition: color 0.3s;
+}
+
+.menu-arrow {
+  color: #133c55;
+  font-size: 1.2rem;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s;
+}
+
+/* Active State (Desktop) */
+.menu-item.active {
+  background: white; /* Turns Solid White */
+  border-color: white;
+  border-left-color: #ffc107; /* Gold Bar */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  transform: translateX(10px); /* Pop Effect */
+}
+
+.menu-item.active .menu-icon { color: #ffc107; }
+.menu-item.active .menu-title { color: #133c55; font-weight: 700; }
+.menu-item.active .menu-arrow { opacity: 1; transform: translateX(0); }
+
+
+/* --- RIGHT SIDE: PREVIEW PANE --- */
+.deck-preview {
+  flex: 1; /* Takes remaining width */
+  background: #0f172a; /* Dark Fallback */
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  
+  /* FIX: Use min-height so it can grow if content is long */
+  min-height: 500px; 
+  height: auto;
+  
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center; 
+  justify-content: flex-start;
+  padding: 0; 
+}
+
+/* Cards (Default: Absolute & Hidden) */
+.preview-card {
+  position: absolute; /* Inactive cards sit on top of each other */
+  top: 0; left: 0; 
+  width: 100%; 
+  min-height: 100%; /* Ensure it fills the box */
+  
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Active Card (FIX: Becomes Relative to push parent height) */
+.preview-card.show {
+  position: relative; /* <--- THIS FIXES THE PHASING ISSUE */
+  opacity: 1;
+  pointer-events: all;
+  z-index: 2;
+}
+
+/* Background Image Layer */
+.card-bg-image {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  transition: transform 6s ease; 
+}
+
+.preview-card.show .card-bg-image {
+  transform: scale(1.05);
+}
+
+/* Dark Gradient Overlay */
+.preview-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to right, rgba(19, 60, 85, 0.95) 0%, rgba(19, 60, 85, 0.75) 50%, rgba(19, 60, 85, 0.3) 100%);
+  z-index: 0;
+}
+
+/* Content inside the card */
+.preview-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  max-width: 500px;
+  animation: slideUp 0.6s ease-out;
+}
+
+.preview-badge {
+  background: #ffc107;
+  color: #133c55;
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 25px;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.preview-content h3 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.preview-content p {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 3rem;
+  text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+}
+
+.btn-deck {
+  background: white;
+  color: #133c55;
+  padding: 16px 40px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 800;
+  transition: all 0.3s;
+  display: inline-block;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.btn-deck:hover {
+  background: #ffc107;
+  color: #133c55;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* =========================================
+   3. RESPONSIVE LAYOUT (TABLET & MOBILE)
+   ========================================= */
+@media (max-width: 1100px) {
+  
+  .services-section { padding: 50px 0; }
+  .feature-deck { display: block; height: auto; }
+  
+  .desktop-only { display: none; }
+  .mobile-only { display: block; }
+
+  /* Buttons: Flex Pyramid */
+  .deck-menu {
+    display: flex;
+    flex-wrap: wrap;           
+    justify-content: center;   
+    gap: 10px;                
+    width: 100%;
+    margin-bottom: 20px;       
+    flex: none;
+  }
+
+  .menu-item {
+    flex: 0 0 calc(33.33% - 7px);
+    padding: 10px 5px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    transform: none !important;
+    text-align: center;
+    border-left: 1px solid rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    box-sizing: border-box; 
+  }
+  
+  .menu-item-header {
+    flex-direction: column;
+    gap: 6px;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .menu-icon { font-size: 1.2rem; color: #cbd5e1; justify-content: center; }
+  .menu-title { 
+    font-size: 0.75rem; 
+    color: white; 
+    line-height: 1.1;
+    white-space: normal;
+  }
+
+  .menu-item.active {
+    background: #ffc107;
+    border-color: #ffc107;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+  .menu-item.active .menu-title { color: #133c55; font-weight: 800; }
+  .menu-item.active .menu-icon { color: #133c55; }
+
+
+  /* Main Card: Dynamic Height */
+  .deck-preview {
+    display: block;
+    position: relative;
+    min-height: 500px; 
+    height: auto;      
+    width: 100%;
+    border-radius: 20px;
+    margin-top: 10px;
+    overflow: hidden; 
+    padding: 0;
+    box-sizing: border-box; 
+  }
+  
+  /* The Card: Relative allows it to push the height of the container */
+  .preview-card {
+    position: relative; 
+    top: auto; left: auto;
+    width: 100%; 
+    min-height: 500px;
+    height: auto;
+    
+    display: none; 
+    padding: 40px 20px; 
+    justify-content: flex-end; 
+    align-items: flex-start;
+    box-sizing: border-box; 
+  }
+  
+  .preview-card.show {
+    display: flex;
+    flex-direction: column; 
+    animation: fadeIn 0.4s ease;
+  }
+  
+  .preview-card::before {
+    background: linear-gradient(to top, rgba(19, 60, 85, 1) 15%, rgba(19, 60, 85, 0.6) 60%, rgba(19, 60, 85, 0.2) 100%);
+  }
+
+  .preview-content {
+    width: 100%;
+    margin-top: auto; 
+    box-sizing: border-box;
+  }
+  
+  .preview-content h3 { font-size: 1.8rem; margin-top: 0; }
+  .preview-content p { font-size: 1rem; margin-bottom: 2rem; max-width: 100%; }
+  
+  .btn-deck {
+    width: 100%; 
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .preview-bg-icon { display: none; }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}

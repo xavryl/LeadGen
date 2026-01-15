@@ -1,0 +1,174 @@
+/* =========================================
+   1. SECTION BACKGROUND (Parallax)
+   ========================================= */
+.process-section {
+  padding: 100px 0;
+  position: relative;
+  
+  /* PARALLAX SETTINGS */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  /* Fallback color if image fails */
+  background-color: #133c55; 
+}
+
+/* =========================================
+   2. HEADER STYLING (White Text for Dark Bg)
+   ========================================= */
+.process-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
+}
+
+.process-tag {
+  color: #ffc107; /* Gold */
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.85rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.process-title {
+  font-size: 2.5rem;
+  color: white; /* Bright White */
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.process-subtitle {
+  font-size: 1.1rem;
+  color: #cbd5e1; /* Light Gray for readability */
+  line-height: 1.6;
+}
+
+/* =========================================
+   3. GRID & CARDS
+   ========================================= */
+.process-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+/* Cards remain White to contrast against the dark Navy/City background */
+.process-card {
+  background: white; 
+  padding: 40px 30px;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.process-card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+/* Gold Bottom Border Slide */
+.process-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 4px;
+  background: #ffc107;
+  transition: width 0.4s ease;
+}
+
+.process-card:hover::after {
+  width: 100%;
+}
+
+/* =========================================
+   4. WATERMARK & CONTENT
+   ========================================= */
+.watermark {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: 8rem;
+  font-weight: 900;
+  color: #f1f5f9; /* Very faint gray */
+  z-index: -1;
+  transition: all 0.4s ease;
+  line-height: 1;
+}
+
+.process-card:hover .watermark {
+  color: rgba(255, 193, 7, 0.15); /* Gold tint on hover */
+  transform: scale(1.1) rotate(-10deg);
+}
+
+.icon-box {
+  width: 60px;
+  height: 60px;
+  background: #f1f5f9;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #133c55;
+  margin-bottom: 25px;
+  transition: all 0.3s ease;
+}
+
+.process-card:hover .icon-box {
+  background: #133c55;
+  color: #ffc107;
+}
+
+.process-card h3 {
+  font-size: 1.25rem;
+  color: #133c55;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.process-card p {
+  font-size: 0.95rem;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* =========================================
+   5. MOBILE RESPONSIVE
+   ========================================= */
+@media (max-width: 1024px) {
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .process-section {
+    background-attachment: scroll; /* Disable parallax on mobile for performance */
+  }
+
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .process-card {
+    text-align: center;
+  }
+  
+  .icon-box {
+    margin: 0 auto 20px;
+  }
+}

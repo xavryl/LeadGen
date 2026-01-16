@@ -3,7 +3,8 @@ import './Hero.css';
 
 const Hero = ({ onOpenModal }) => {
   return (
-    <section id="home" className="hero">
+    // CHANGE id="home" TO id="hero" BELOW:
+    <section id="hero" className="hero">
       
       {/* BACKGROUND VIDEO */}
       <video 
@@ -36,7 +37,7 @@ const Hero = ({ onOpenModal }) => {
           </p>
 
           <div className="hero-stats">
-             <div className="stat-item">
+              <div className="stat-item">
                <h3>200+</h3>
                <span>Projects</span>
              </div>

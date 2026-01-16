@@ -9,8 +9,9 @@ import Process from './components/Process';
 import WhyChooseUs from './components/WhyChooseUs'; 
 import Testimonials from './components/Testimonials'; 
 import Careers from './components/Careers'; 
-import Contact from './components/Contact'; // 1. Import Contact
-import Footer from './components/Footer';   // 2. Import Footer
+import Contact from './components/Contact'; 
+import Footer from './components/Footer';     
+import FAQWidget from './components/FAQWidget'; // <--- 1. Import the FAQ Widget
 
 import './App.css';
 
@@ -46,12 +47,15 @@ function App() {
         {/* 7. CAREERS */}
         <Careers />
 
-        {/* 8. CONTACT (New) */}
+        {/* 8. CONTACT */}
         <Contact />
       </main>
 
-      {/* 9. FOOTER (New) */}
+      {/* 9. FOOTER */}
       <Footer />
+
+      {/* 10. FLOATING FAQ WIDGET (New) */}
+      <FAQWidget />
 
       {/* --- HERO MODAL LOGIC (Kept Separate for Hero Button) --- */}
       {isModalOpen && (

@@ -1,0 +1,13 @@
+/* Add this to the very top of your CSS file */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px; /* Offsets the scroll so the fixed header doesn't cover section titles */
+}
+
+/* Optional: Ensure body takes up full height */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  overflow-x: hidden;
+  width: 100%;
+}

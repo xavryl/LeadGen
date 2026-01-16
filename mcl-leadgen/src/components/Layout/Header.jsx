@@ -21,9 +21,10 @@ const Header = () => {
     <header className={`header ${scrolled ? 'scrolled' : 'transparent'}`}>
       <div className="header-container">
         
-        {/* LOGO */}
+        {/* LOGO SECTION */}
         <a href="#hero" className="logo" onClick={closeMobileMenu}>
-          <img src="/logo.svg" alt="MCL Generation" />
+          {/* UPDATED LOGO PATH BELOW: */}
+          <img src="/newlogo.png" alt="MCL Generation" />
         </a>
 
         {/* MOBILE TOGGLE */}
@@ -40,10 +41,11 @@ const Header = () => {
             <li><a href="#about" className="nav-link" onClick={closeMobileMenu}>About</a></li>
             <li><a href="#process" className="nav-link" onClick={closeMobileMenu}>Process</a></li>
             
-            {/* BENEFITS LINK -> Links to Why Choose Us */}
             <li>
               <a href="#why-choose-us" className="nav-link" onClick={closeMobileMenu}>Benefits</a>
             </li>
+
+            <li><a href="#testimonials" className="nav-link" onClick={closeMobileMenu}>Testimonials</a></li>
             <li><a href="#join" className="nav-link" onClick={closeMobileMenu}>Careers</a></li>
           </ul>
 

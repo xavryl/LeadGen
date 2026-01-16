@@ -1,6 +1,7 @@
+// File: src/components/Contact.jsx
+
 import React, { useState } from 'react';
 import { FaEnvelope, FaLink, FaArrowRight, FaTimes, FaCheckCircle } from 'react-icons/fa';
-import emailjs from '@emailjs/browser';
 import './Contact.css';
 
 const Contact = () => {
@@ -8,7 +9,7 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
-  // FULL FORM STATE (Matching your original HTML requirements)
+  // Form State
   const [formData, setFormData] = useState({
     fullName: '',
     businessEmail: '',
@@ -27,18 +28,27 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Replace with your actual Public Key
-    emailjs.send(
-      "service_4bwubli", 
-      "template_txo056k", 
-      formData, 
-      "gaWmTPnls6x2a3qp9" 
-    ).then(
-      () => {
+    try {
+      // CALL YOUR OWN INTERNAL API (api/email.js)
+      const response = await fetch('/api/email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          service_id: "service_4bwubli",
+          template_id: "template_txo056k",
+          user_id: "gaWmTPnls6x2a3qp9", // Your Public Key
+          template_params: formData
+        }),
+      });
+
+      if (response.ok) {
+        // SUCCESS: Reset form and show success message
         setIsSubmitting(false);
         setSubmitSuccess(true);
         setTimeout(() => {
@@ -51,12 +61,16 @@ const Contact = () => {
             projectDetails: '', googleSheetLink: ''
           });
         }, 2500);
-      },
-      () => {
-        setIsSubmitting(false);
-        alert("Something went wrong. Please try again.");
+      } else {
+        // SERVER ERROR
+        throw new Error('Failed to send message via proxy');
       }
-    );
+    } catch (error) {
+      // NETWORK/API ERROR
+      setIsSubmitting(false);
+      console.error("API Error:", error);
+      alert("Failed to send message. Please try again.");
+    }
   };
 
   return (
@@ -205,29 +219,29 @@ const Contact = () => {
                   <div className="input-group">
                     <label>Industry *</label>
                     <select name="industry" required value={formData.industry} onChange={handleChange}>
-                       <option value="">Choose an industry...</option>
-                       <option value="Adult Beverage">Adult Beverage</option>
-                       <option value="Agriculture, Agribusiness">Agriculture, Agribusiness</option>
-                       <option value="Agtech">Agtech</option>
-                       <option value="Animal Health, Pet Products">Animal Health, Pet Products</option>
-                       <option value="Apparel & Fashion">Apparel & Fashion</option>
-                       <option value="Beauty, Personal Care">Beauty, Personal Care</option>
-                       <option value="Fintech">Fintech</option>
-                       <option value="Fitness">Fitness</option>
-                       <option value="Food & Beverage">Food & Beverage</option>
-                       <option value="Health & Wellness & Nutrition">Health & Wellness & Nutrition</option>
-                       <option value="Home Goods">Home Goods</option>
-                       <option value="Jewelry & Accessories">Jewelry & Accessories</option>
-                       <option value="Manufacturing">Manufacturing</option>
-                       <option value="OTC Pharma">OTC Pharma</option>
-                       <option value="Recreational & Outdoor Products">Recreational & Outdoor Products</option>
-                       <option value="Restaurants">Restaurants</option>
-                       <option value="SaaS">SaaS</option>
-                       <option value="Sporting Goods">Sporting Goods</option>
-                       <option value="Telecommunications">Telecommunications</option>
-                       <option value="Therapeutic & Recovery">Therapeutic & Recovery</option>
-                       <option value="Wellness & Nutrition, Supplements">Wellness & Nutrition</option>
-                    </select>
+                        <option value="">Choose an industry...</option>
+                        <option value="Adult Beverage">Adult Beverage</option>
+                        <option value="Agriculture, Agribusiness">Agriculture, Agribusiness</option>
+                        <option value="Agtech">Agtech</option>
+                        <option value="Animal Health, Pet Products">Animal Health, Pet Products</option>
+                        <option value="Apparel & Fashion">Apparel & Fashion</option>
+                        <option value="Beauty, Personal Care">Beauty, Personal Care</option>
+                        <option value="Fintech">Fintech</option>
+                        <option value="Fitness">Fitness</option>
+                        <option value="Food & Beverage">Food & Beverage</option>
+                        <option value="Health & Wellness & Nutrition">Health & Wellness & Nutrition</option>
+                        <option value="Home Goods">Home Goods</option>
+                        <option value="Jewelry & Accessories">Jewelry & Accessories</option>
+                        <option value="Manufacturing">Manufacturing</option>
+                        <option value="OTC Pharma">OTC Pharma</option>
+                        <option value="Recreational & Outdoor Products">Recreational & Outdoor Products</option>
+                        <option value="Restaurants">Restaurants</option>
+                        <option value="SaaS">SaaS</option>
+                        <option value="Sporting Goods">Sporting Goods</option>
+                        <option value="Telecommunications">Telecommunications</option>
+                        <option value="Therapeutic & Recovery">Therapeutic & Recovery</option>
+                        <option value="Wellness & Nutrition, Supplements">Wellness & Nutrition</option>
+                     </select>
                   </div>
 
                   <div className="input-group">

@@ -1,6 +1,7 @@
 // File: src/components/Contact.jsx
 
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser'; // Make sure to run: npm install @emailjs/browser
 import { FaEnvelope, FaLink, FaArrowRight, FaTimes, FaCheckCircle } from 'react-icons/fa';
 import './Contact.css';
 
@@ -32,47 +33,45 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    try {
-      // CALL YOUR OWN INTERNAL API (api/email.js)
-      const response = await fetch('/api/email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          service_id: "service_4bwubli",
-          template_id: "template_txo056k",
-          user_id: "gaWmTPnls6x2a3qp9", // Your Public Key
-          template_params: formData
-        }),
-      });
+    // --- CONFIGURATION ---
+    const serviceID = "service_4bwubli";
+    const templateID = "template_txo056k";
+    const publicKey = "gaWmTPnls6x2a3qp9"; 
+    // ---------------------
 
-      if (response.ok) {
-        // SUCCESS: Reset form and show success message
-        setIsSubmitting(false);
-        setSubmitSuccess(true);
-        setTimeout(() => {
-          setShowModal(false);
-          setSubmitSuccess(false);
-          setFormData({
-            fullName: '', businessEmail: '', companyWebsite: '', 
-            industry: '', contactTypes: '', deliveryFrequency: '', 
-            paymentModel: '', budgetRange: '', hearAboutUs: '', 
-            projectDetails: '', googleSheetLink: ''
-          });
-        }, 2500);
-      } else {
-        // SERVER ERROR
-        throw new Error('Failed to send message via proxy');
-      }
-    } catch (error) {
-      // NETWORK/API ERROR
+    try {
+      // FIX: Send directly via EmailJS SDK instead of fetch('/api/email')
+      await emailjs.send(
+        serviceID,
+        templateID,
+        formData, // We pass the form data directly
+        publicKey
+      );
+
+      // SUCCESS HANDLING
       setIsSubmitting(false);
-      console.error("API Error:", error);
+      setSubmitSuccess(true);
+      
+      setTimeout(() => {
+        setShowModal(false);
+        setSubmitSuccess(false);
+        setFormData({
+          fullName: '', businessEmail: '', companyWebsite: '', 
+          industry: '', contactTypes: '', deliveryFrequency: '', 
+          paymentModel: '', budgetRange: '', hearAboutUs: '', 
+          projectDetails: '', googleSheetLink: ''
+        });
+      }, 2500);
+
+    } catch (error) {
+      // ERROR HANDLING
+      setIsSubmitting(false);
+      console.error("EmailJS Error:", error);
       alert("Failed to send message. Please try again.");
     }
   };
 
+  // ... (The rest of your Return/JSX code remains exactly the same)
   return (
     <section id="contact" className="contact-section">
       {/* Background Decor */}
@@ -241,7 +240,7 @@ const Contact = () => {
                         <option value="Telecommunications">Telecommunications</option>
                         <option value="Therapeutic & Recovery">Therapeutic & Recovery</option>
                         <option value="Wellness & Nutrition, Supplements">Wellness & Nutrition</option>
-                     </select>
+                      </select>
                   </div>
 
                   <div className="input-group">

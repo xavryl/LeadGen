@@ -1,5 +1,7 @@
+// File: src/components/FAQWidget.jsx
+
 import React, { useState } from 'react';
-import { FaQuestion, FaTimes, FaChevronRight } from 'react-icons/fa';
+import { FaTimes, FaChevronRight } from 'react-icons/fa'; // Removed FaQuestion
 import './FAQWidget.css';
 
 const faqData = [
@@ -96,7 +98,7 @@ const FAQWidget = () => {
         onClick={toggleModal}
         aria-label="Open FAQ"
       >
-        <FaQuestion className="faq-icon" />
+        <span className="faq-btn-text">FAQ</span>
       </button>
 
       {/* MODAL BACKDROP & CONTAINER */}

@@ -9,7 +9,7 @@ const servicesData = [
     title: "Lead Research",
     icon: <FaChartLine />,
     desc: "We verify every data point to give you direct access to decision-makers. Our lists are hand-curated to ensure 99% deliverability.",
-    stat: "99% Data Accuracy",
+    stat: "Lead Research",
     img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000" // Data Analysis
   },
   {
@@ -17,7 +17,7 @@ const servicesData = [
     title: "Sales Funnels",
     icon: <FaFilter />,
     desc: "We architect the entire journey so you stop losing customers. From the first ad click to the final checkout, we optimize every step.",
-    stat: "2x Conversion Rate",
+    stat: "Sales Funnels",
     img: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=1000" // Strategic Meeting
   },
   {
@@ -25,7 +25,7 @@ const servicesData = [
     title: "Email Marketing",
     icon: <FaEnvelopeOpenText />,
     desc: "Stop landing in spam. We build high-deliverability campaigns that actually get opened, read, and replied to by your prospects.",
-    stat: "40%+ Open Rate",
+    stat: "Email Marketing",
     img: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=1000" // Digital Marketing/Tech
   },
   {
@@ -33,7 +33,7 @@ const servicesData = [
     title: "Cold Calling",
     icon: <FaHeadset />,
     desc: "Native-level pros handling rejection so you handle the closing. We set the appointments; you sign the deals.",
-    stat: "15+ Meetings/Week",
+    stat: "Cold Calling",
     img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1000" // Call Center/Headset
   },
   {
@@ -41,7 +41,7 @@ const servicesData = [
     title: "Virtual Assistants",
     icon: <FaRobot />,
     desc: "Scale faster. Hand off repetitive tasks to dedicated experts who learn your specific business workflow inside out.",
-    stat: "Full-time",
+    stat: "Virtual Assistants",
     img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1000" // Collaborative/Teamwork
   }
 ];

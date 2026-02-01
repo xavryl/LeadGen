@@ -1,34 +1,35 @@
 import React, { useState } from 'react';
-
-// Component Imports
 import Header from './components/Layout/Header';
 import Hero from './components/Hero';
 import Services from './components/Services'; 
 import Pricing from './components/Pricing'; 
-import About from './components/About';       
-import Process from './components/Process';   
+import About from './components/About';        
+import Process from './components/Process';    
 import WhyChooseUs from './components/WhyChooseUs'; 
 import Testimonials from './components/Testimonials'; 
 import Careers from './components/Careers'; 
 import Contact from './components/Contact'; 
-import Footer from './components/Footer';     
+import Footer from './components/Footer';      
 import FAQWidget from './components/FAQWidget';
 
 import './App.css';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // --- DELETE THE USEEFFECT BLOCK THAT WAS HERE ---
-  // The PayPal script is now safely loaded in public/index.html
-  // This prevents the "Bootstrap Error" and "Request Listener" crash.
+  // State to control the FAQ Modal globally
+  const [isFAQOpen, setIsFAQOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
+  // FAQ Handlers
+  const openFAQ = () => setIsFAQOpen(true);
+  const closeFAQ = () => setIsFAQOpen(false);
+
   return (
     <div className="app">
-      <Header />
+      {/* Pass the openFAQ function to the Header */}
+      <Header onOpenFAQ={openFAQ} />
       
       <main>
         <Hero onOpenModal={openModal} />
@@ -43,7 +44,9 @@ function App() {
       </main>
 
       <Footer />
-      <FAQWidget />
+      
+      {/* FAQWidget now receives state and handlers from App.js */}
+      <FAQWidget isOpen={isFAQOpen} onToggle={setIsFAQOpen} />
 
       {/* Hero Modal Logic */}
       {isModalOpen && (

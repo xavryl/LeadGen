@@ -1,7 +1,7 @@
 // File: src/components/FAQWidget.jsx
 
 import React, { useState } from 'react';
-import { FaTimes, FaChevronRight } from 'react-icons/fa'; // Removed FaQuestion
+import { FaTimes, FaChevronRight } from 'react-icons/fa';
 import './FAQWidget.css';
 
 const faqData = [
@@ -83,16 +83,14 @@ const faqData = [
   }
 ];
 
-const FAQWidget = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  // Default to the first question being selected
+const FAQWidget = ({ isOpen, onToggle }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const toggleModal = () => setIsOpen(!isOpen);
+  const toggleModal = () => onToggle(!isOpen);
 
   return (
     <>
-      {/* TRIGGER BUTTON */}
+      {/* TRIGGER BUTTON (Floating) */}
       <button 
         className={`faq-trigger-btn ${isOpen ? 'hide' : ''}`} 
         onClick={toggleModal}

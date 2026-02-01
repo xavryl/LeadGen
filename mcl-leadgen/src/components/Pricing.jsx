@@ -145,7 +145,7 @@ const Pricing = () => {
                 <li>Contact details: Name, Co. Address, Title, Email, Phone, Linkedin (max 6 columns)</li>
                 <li>Company details: Name, Address, Phone, # of employees, Linkedin, Revenue (max 6 columns)</li>
                 <li>Valid Business Emails</li>
-                <li>1-2% email bounce rate guaranteed</li>
+                <li>Guaranteed 1-2% email bounce rates</li>
                 <li>Tracked via WebWork – Turnaround time varies</li>
               </ul>
             </div>

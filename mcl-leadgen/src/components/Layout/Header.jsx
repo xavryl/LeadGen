@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Header.css';
 
-const Header = () => {
+const Header = ({ onOpenFAQ }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileActive, setIsMobileActive] = useState(false);
 
@@ -14,6 +14,12 @@ const Header = () => {
 
   // Closes the mobile menu when a link is clicked
   const closeMobileMenu = () => setIsMobileActive(false);
+
+  // Handles FAQ click: opens modal and closes mobile menu
+  const handleFAQClick = () => {
+    onOpenFAQ();
+    closeMobileMenu();
+  };
 
   return (
     <header className={`header ${isScrolled ? 'scrolled' : 'transparent'}`}>
@@ -60,6 +66,13 @@ const Header = () => {
             
             <li>
               <a href="#testimonials" className="nav-link" onClick={closeMobileMenu}>Reviews</a>
+            </li>
+
+            {/* NEW: FAQ Button */}
+            <li>
+              <button className="nav-faq-btn" onClick={handleFAQClick}>
+                FAQ
+              </button>
             </li>
           </ul>
 

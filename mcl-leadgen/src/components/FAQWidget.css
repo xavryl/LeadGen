@@ -10,7 +10,7 @@
   height: 60px;
   border-radius: 50%;
   background: linear-gradient(135deg, #133c55 0%, #0f2b3d 100%); /* Navy */
-  color: #ffc107; /* Gold */
+  color: #ffffff; /* Gold */
   border: none;
   box-shadow: 0 1px 10px rgba(255, 255, 255, 1);
   cursor: pointer;

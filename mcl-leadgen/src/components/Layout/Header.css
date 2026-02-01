@@ -254,3 +254,34 @@
     padding: 1rem;
   }
 }
+
+/* --- FAQ NAVBAR BUTTON --- */
+.nav-faq-btn {
+  background: transparent;
+  border: 1px solid #ffc107;
+  color: #ffc107;
+  padding: 6px 15px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  letter-spacing: 0.5px;
+}
+
+.nav-faq-btn:hover {
+  background: #ffc107;
+  color: #133c55;
+  transform: translateY(-2px);
+}
+
+/* --- MOBILE FAQ STYLES --- */
+@media (max-width: 992px) {
+  .nav-faq-btn {
+    font-size: 1.3rem;
+    padding: 10px 30px;
+    width: auto;
+    border-width: 2px;
+  }
+}

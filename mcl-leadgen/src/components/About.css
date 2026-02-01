@@ -106,7 +106,7 @@
 /* =========================================
    4. RIGHT SIDE: CONTENT
    ========================================= */
-.about-tag { color: #386fa4; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.9rem; display: block; margin-bottom: 15px; }
+.about-tag { color: #386fa4; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; font-size: 1.8rem; display: block; margin-bottom: 15px; }
 .about-title { font-size: 3rem; line-height: 1.1; color: #0f172a; margin-bottom: 25px; font-weight: 800; }
 .highlight { color: #133c55; position: relative; display: inline-block; z-index: 1; }
 .highlight::after { content: ''; position: absolute; bottom: 5px; left: 0; width: 100%; height: 12px; background: rgba(255, 193, 7, 0.4); z-index: -1; border-radius: 4px; }

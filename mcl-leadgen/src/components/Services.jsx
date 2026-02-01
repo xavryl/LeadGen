@@ -41,7 +41,7 @@ const servicesData = [
     title: "Virtual Assistants",
     icon: <FaRobot />,
     desc: "Scale faster. Hand off repetitive tasks to dedicated experts who learn your specific business workflow inside out.",
-    stat: "24/7 Availability",
+    stat: "Full-time",
     img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1000" // Collaborative/Teamwork
   }
 ];

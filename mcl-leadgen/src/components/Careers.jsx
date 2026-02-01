@@ -30,7 +30,7 @@ const Careers = () => {
         
         {/* HEADER CONTENT */}
         <div className="join-header">
-          <span className="join-tag">We Are Hiring</span>
+          <span className="join-tag">Join our team</span>
           <h2 className="join-title">Join Our Remote Team of Experts!</h2>
           <p className="join-desc">
             Be part of a dynamic team that's transforming how businesses connect 

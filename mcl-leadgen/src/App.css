@@ -1,7 +1,6 @@
 /* =========================================
-   1. GLOBAL RESET & LAYOUT
+   1. GLOBAL RESET & LAYOUT (From your "Fine" Code)
    ========================================= */
-/* Removes default Vite margins/padding that prevent full-width layouts */
 :root {
   font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -13,10 +12,10 @@ body {
   padding: 0;
   min-width: 320px;
   min-height: 100vh;
-  overflow-x: hidden; /* Prevents horizontal scroll from animations */
+  overflow-x: hidden;
+  background-color: #0f172a; /* Ensure dark background matches site */
 }
 
-/* Important: This overrides the default Vite center alignment */
 #root {
   max-width: 100%;
   margin: 0;
@@ -30,7 +29,8 @@ body {
 }
 
 /* =========================================
-   2. MODAL STYLES
+   2. GENERIC MODAL STYLES (From your "Fine" Code)
+   (Keeps your existing white modals working)
    ========================================= */
 .modal-overlay {
   position: fixed;
@@ -38,13 +38,12 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  /* Navy Blue transparent background */
   background: rgba(19, 60, 85, 0.9); 
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2000; /* High z-index to sit on top of everything */
-  backdrop-filter: blur(5px); /* Frosted glass effect behind modal */
+  z-index: 2000; 
+  backdrop-filter: blur(5px);
   padding: 20px;
 }
 
@@ -100,7 +99,7 @@ body {
   border-radius: 10px;
   margin-bottom: 15px;
   font-size: 1rem;
-  box-sizing: border-box; /* Ensures padding doesn't break width */
+  box-sizing: border-box;
   transition: border-color 0.3s ease;
   outline: none;
 }
@@ -130,12 +129,165 @@ body {
 }
 
 @keyframes slideUp {
-  from { 
-    opacity: 0; 
-    transform: translateY(50px); 
-  }
-  to { 
-    opacity: 1; 
-    transform: translateY(0); 
-  }
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   3. UNIQUE BANKRUPTCY FORM MODAL
+   (New Navy Blue Theme - Completely Separate)
+   ========================================= */
+
+.bankruptform-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 25, 41, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  backdrop-filter: blur(8px);
+  padding: 20px;
+  animation: bankruptformFadeIn 0.3s forwards;
+}
+
+.bankruptform-modal {
+  background-color: #133c55; /* Navy Blue */
+  width: 100%;
+  max-width: 550px;
+  border-radius: 20px;
+  padding: 40px;
+  position: relative;
+  box-shadow: 0 30px 60px -15px rgba(0,0,0,0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  animation: bankruptformSlideUp 0.3s ease-out;
+}
+
+.bankruptform-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.bankruptform-header h2 {
+  color: white;
+  margin: 0 0 10px 0;
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.bankruptform-header p {
+  color: #ffc107;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.bankruptform-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: rgba(255,255,255,0.7);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.bankruptform-close-btn:hover {
+  color: #ffc107;
+}
+
+.bankruptform-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bankruptform-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #cbd5e1;
+  letter-spacing: 0.5px;
+}
+
+.bankruptform-required {
+  color: #ffc107;
+  margin-left: 3px;
+}
+
+.bankruptform-group input {
+  width: 100%;
+  padding: 14px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  color: white;
+  font-size: 1rem;
+  box-sizing: border-box;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.bankruptform-group input:focus {
+  border-color: #ffc107;
+  background: rgba(0,0,0,0.3);
+}
+
+.bankruptform-group input::placeholder {
+  color: #64748b;
+  font-style: italic;
+}
+
+.bankruptform-submit-btn {
+  background: #ffc107;
+  color: #133c55;
+  font-weight: 800;
+  border: none;
+  padding: 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  box-shadow: 0 5px 15px rgba(255, 193, 7, 0.2);
+}
+
+.bankruptform-submit-btn:hover {
+  background: #ffca2c;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255, 193, 7, 0.3);
+}
+
+.bankruptform-submit-btn:disabled {
+  background: #555;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.bankruptform-success { text-align: center; padding: 40px 20px; }
+.bankruptform-success-icon { font-size: 3rem; color: #ffc107; margin-bottom: 20px; }
+.bankruptform-success h3 { color: white; font-size: 1.5rem; margin-bottom: 10px; }
+.bankruptform-success p { color: #cbd5e1; }
+.bankruptform-error { color: #ff6b6b; text-align: center; margin-top: 10px; font-size: 0.9rem; }
+
+@keyframes bankruptformSlideUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bankruptformFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

@@ -12,21 +12,35 @@ const Header = ({ onOpenFAQ }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Closes the mobile menu when a link is clicked
+  // Closes the mobile menu
   const closeMobileMenu = () => setIsMobileActive(false);
 
-  // Handles FAQ click: opens modal and closes mobile menu
+  // Handles FAQ click
   const handleFAQClick = () => {
     onOpenFAQ();
     closeMobileMenu();
+  };
+
+  // --- FORCE SCROLL FUNCTION ---
+  // This manually finds the section and scrolls to it
+  const handleNavClick = (e, targetId) => {
+    e.preventDefault(); // Prevent default anchor jump
+    closeMobileMenu();  // Close mobile menu if open
+    
+    const section = document.getElementById(targetId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      console.warn(`Section #${targetId} not found!`);
+    }
   };
 
   return (
     <header className={`header ${isScrolled ? 'scrolled' : 'transparent'}`}>
       <div className="header-container">
         
-        {/* Logo */}
-        <a href="#hero" className="logo" onClick={closeMobileMenu}>
+        {/* Logo - Scroll to Hero */}
+        <a href="#hero" className="logo" onClick={(e) => handleNavClick(e, 'hero')}>
           <img src="/newlogo.png" alt="MCL Logo" />
         </a>
 
@@ -34,41 +48,41 @@ const Header = ({ onOpenFAQ }) => {
         <div className={`nav-menu-wrapper ${isMobileActive ? 'active' : ''}`}>
           <ul className="nav-menu">
             <li>
-              <a href="#hero" className="nav-link" onClick={closeMobileMenu}>Home</a>
+              <a href="#hero" className="nav-link" onClick={(e) => handleNavClick(e, 'hero')}>Home</a>
             </li>
             <li>
-              <a href="#services" className="nav-link" onClick={closeMobileMenu}>Services</a>
+              <a href="#services" className="nav-link" onClick={(e) => handleNavClick(e, 'services')}>Services</a>
             </li>
             <li>
-              <a href="#pricing" className="nav-link" onClick={closeMobileMenu}>Pricing</a>
+              <a href="#pricing" className="nav-link" onClick={(e) => handleNavClick(e, 'pricing')}>Pricing</a>
             </li>
             
             {/* Dropdown (Company) */}
             <li className="dropdown">
-              <a href="#about" className="nav-link dropdown-toggle" onClick={closeMobileMenu}>
+              <span className="nav-link dropdown-toggle" style={{cursor: 'pointer'}}>
                 Company <span className="arrow">▼</span>
-              </a>
+              </span>
               <ul className="dropdown-menu">
                 <li>
-                  <a href="#about" className="dropdown-item" onClick={closeMobileMenu}>About Us</a>
+                  <a href="#about" className="dropdown-item" onClick={(e) => handleNavClick(e, 'about')}>About Us</a>
                 </li>
                 <li>
-                  <a href="#process" className="dropdown-item" onClick={closeMobileMenu}>Our Process</a>
+                  <a href="#process" className="dropdown-item" onClick={(e) => handleNavClick(e, 'process')}>Our Process</a>
                 </li>
                 <li>
-                  <a href="#why-choose-us" className="dropdown-item" onClick={closeMobileMenu}>Why Choose Us</a>
+                  <a href="#why-choose-us" className="dropdown-item" onClick={(e) => handleNavClick(e, 'why-choose-us')}>Why Choose Us</a>
                 </li>
                 <li>
-                  <a href="#careers" className="dropdown-item" onClick={closeMobileMenu}>Careers</a>
+                  <a href="#careers" className="dropdown-item" onClick={(e) => handleNavClick(e, 'careers')}>Careers</a>
                 </li>
               </ul>
             </li>
             
             <li>
-              <a href="#testimonials" className="nav-link" onClick={closeMobileMenu}>Reviews</a>
+              <a href="#testimonials" className="nav-link" onClick={(e) => handleNavClick(e, 'testimonials')}>Reviews</a>
             </li>
 
-            {/* NEW: FAQ Button */}
+            {/* FAQ Button */}
             <li>
               <button className="nav-faq-btn" onClick={handleFAQClick}>
                 FAQ
@@ -77,7 +91,7 @@ const Header = ({ onOpenFAQ }) => {
           </ul>
 
           {/* Contact Button */}
-          <a href="#contact" className="btn-header" onClick={closeMobileMenu}>Contact Us</a>
+          <a href="#contact" className="btn-header" onClick={(e) => handleNavClick(e, 'contact')}>Contact Us</a>
         </div>
 
         {/* Mobile Hamburger Toggle */}

@@ -25,7 +25,8 @@ const highlights = [
 
 const Careers = () => {
   return (
-    <section id="join" className="join-section">
+    // CRITICAL: id="careers" allows the navbar to scroll here
+    <section id="careers" className="join-section">
       <div className="join-container">
         
         {/* HEADER CONTENT */}

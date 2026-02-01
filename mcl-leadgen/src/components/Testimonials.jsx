@@ -28,7 +28,8 @@ const reviews = [
 
 const Testimonials = () => {
   return (
-    <section className="testimony-section">
+    // CRITICAL: id="testimonials" allows the navbar to scroll here
+    <section id="testimonials" className="testimony-section">
       
       {/* FLOATING BACKGROUND SHAPES */}
       <div className="testimony-floating-shapes">

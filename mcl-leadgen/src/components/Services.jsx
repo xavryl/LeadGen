@@ -79,10 +79,21 @@ const Services = () => {
   // --- HANDLERS ---
   const handleCtaClick = (e, service) => {
     e.preventDefault();
-    if (service.hasModal) {
+
+    // 1. Sales Funnels (ID: 1) -> Scroll to Contact Section
+    if (service.id === 1) {
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    } 
+    // 2. Services with specific Modals (Email, Cold Call, VA)
+    else if (service.hasModal) {
       setSelectedService(service);
       setIsModalOpen(true);
-    } else {
+    } 
+    // 3. Lead Research -> External Link
+    else {
       window.open("https://exclusive.mclleads.com", "_blank");
     }
   };

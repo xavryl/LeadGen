@@ -291,3 +291,15 @@ body {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+/* =========================================
+   SCROLL BEHAVIOR FIX (Add to bottom of App.css)
+   ========================================= */
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  /* This creates invisible space above the ID so the fixed header doesn't cover the title */
+  scroll-margin-top: 100px;
+}

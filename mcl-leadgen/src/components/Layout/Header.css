@@ -285,3 +285,88 @@
     border-width: 2px;
   }
 }
+
+/* Add this to the bottom of your Header.css */
+
+/* Reset button styles to look like links */
+.nav-link-btn,
+.dropdown-item-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+/* Inherit styles from your existing .nav-link class */
+.nav-link-btn {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  position: relative;
+  transition: color 0.3s ease;
+  padding: 5px 0;
+}
+
+.nav-link-btn:hover {
+  color: white;
+}
+
+.nav-link-btn::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #ffc107;
+  transition: width 0.3s ease;
+}
+
+.nav-link-btn:hover::after {
+  width: 100%;
+}
+
+/* Inherit styles from your existing .dropdown-item class */
+.dropdown-item-btn {
+  color: #133c55;
+  text-decoration: none;
+  padding: 0.8rem 1.5rem;
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.dropdown-item-btn:hover {
+  background: rgba(19, 60, 85, 0.05);
+  color: #ffc107;
+  padding-left: 1.8rem;
+}
+
+/* Mobile adjustments */
+@media (max-width: 992px) {
+  .nav-link-btn {
+    font-size: 1.3rem;
+    display: block;
+    padding: 10px;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .dropdown-item-btn {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 0.8rem 0;
+  }
+  
+  .dropdown-item-btn:hover {
+    color: white;
+    background: transparent;
+    padding-left: 0;
+  }
+}

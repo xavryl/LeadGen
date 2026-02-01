@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Header from './components/Layout/Header';
 import Hero from './components/Hero';
 import Services from './components/Services'; 
+import Pricing from './components/Pricing'; 
 import About from './components/About';       
 import Process from './components/Process';   
 import WhyChooseUs from './components/WhyChooseUs'; 
@@ -11,12 +12,16 @@ import Testimonials from './components/Testimonials';
 import Careers from './components/Careers'; 
 import Contact from './components/Contact'; 
 import Footer from './components/Footer';     
-import FAQWidget from './components/FAQWidget'; // <--- 1. Import the FAQ Widget
+import FAQWidget from './components/FAQWidget';
 
 import './App.css';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // --- DELETE THE USEEFFECT BLOCK THAT WAS HERE ---
+  // The PayPal script is now safely loaded in public/index.html
+  // This prevents the "Bootstrap Error" and "Request Listener" crash.
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -26,38 +31,21 @@ function App() {
       <Header />
       
       <main>
-        {/* 1. HERO */}
         <Hero onOpenModal={openModal} />
-
-        {/* 2. SERVICES */}
         <Services />
-
-        {/* 3. ABOUT */}
+        <Pricing /> 
         <About />
-
-        {/* 4. PROCESS */}
         <Process />
-        
-        {/* 5. WHY CHOOSE US */}
         <WhyChooseUs />
-
-        {/* 6. TESTIMONIALS */}
         <Testimonials />
-
-        {/* 7. CAREERS */}
         <Careers />
-
-        {/* 8. CONTACT */}
         <Contact />
       </main>
 
-      {/* 9. FOOTER */}
       <Footer />
-
-      {/* 10. FLOATING FAQ WIDGET (New) */}
       <FAQWidget />
 
-      {/* --- HERO MODAL LOGIC (Kept Separate for Hero Button) --- */}
+      {/* Hero Modal Logic */}
       {isModalOpen && (
         <div className="modal-overlay" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -68,15 +56,14 @@ function App() {
             <div className="modal-body">
               <p>Enter your details below to receive a free Bankruptcy Bulletin sample.</p>
               <form onSubmit={(e) => e.preventDefault()}>
-                <input type="text" placeholder="Full Name" className="modal-input" />
-                <input type="email" placeholder="Enter your email" className="modal-input" />
+                <input type="text" placeholder="Full Name" className="modal-input" required />
+                <input type="email" placeholder="Enter your email" className="modal-input" required />
                 <button type="submit" className="btn-modal-submit">Send Sample</button>
               </form>
             </div>
           </div>
         </div>
       )}
-
     </div>
   );
 }

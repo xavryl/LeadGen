@@ -1,11 +1,11 @@
 import React from 'react';
 import './Hero.css';
+// Ensure the path to your SVG is correct based on your project structure
+import emailVerifyLogo from '../assets/emaillistverify-logo.svg'; 
 
 const Hero = ({ onOpenModal }) => {
   return (
-    // CHANGE id="home" TO id="hero" BELOW:
     <section id="hero" className="hero">
-      
       {/* BACKGROUND VIDEO */}
       <video 
         className="hero-video" 
@@ -13,14 +13,12 @@ const Hero = ({ onOpenModal }) => {
         muted 
         loop 
         playsInline
-        /* This image shows instantly while the video loads or if it fails */
         poster="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80"
       >
         <source src="/City.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
-      {/* Dark Overlay to make text readable */}
       <div className="hero-overlay"></div>
 
       <div className="hero-container">
@@ -52,7 +50,16 @@ const Hero = ({ onOpenModal }) => {
             <button onClick={onOpenModal} className="btn-primary">
               Get a Free Sample – Bankruptcy Bulletin
             </button>
-            <a href="#services" className="btn-outline">Explore Services</a>
+            
+            {/* BRANDED SVG BUTTON LINK */}
+            <a 
+              href="https://emaillistverify.com/?red=mcllea" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="btn-verify"
+            >
+              <img src={emailVerifyLogo} alt="Email List Verify" className="verify-logo" />
+            </a>
           </div>
         </div>
       </div>

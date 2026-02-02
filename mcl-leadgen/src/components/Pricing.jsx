@@ -84,7 +84,7 @@ const Pricing = () => {
           {/* Plan 1 - Newsletter */}
           <div className="pricing-card">
             <div className="card-content">
-              <span className="plan-num">01</span>
+              {/* <span className="plan-num">01</span> */}
               <h3>Bankruptcy Newsletter</h3>
               <p className="price">$99<span>/mo</span></p>
               <ul className="card-features-list">
@@ -109,7 +109,7 @@ const Pricing = () => {
           {/* Plan 2 - Fixed Lead List */}
           <div className="pricing-card highlighted">
             <div className="card-content">
-              <span className="plan-num">02</span>
+              {/* <span className="plan-num">02</span> */}
               <h3>Fixed Price Lead List</h3>
               <p className="price">$79<span>/flat</span></p>
               <ul className="card-features-list">
@@ -135,7 +135,7 @@ const Pricing = () => {
           {/* Plan 3 - Hourly Research */}
           <div className="pricing-card">
             <div className="card-content">
-              <span className="plan-num">03</span>
+              {/* <span className="plan-num">03</span> */}
               <h3>Hourly Lead Research</h3>
               <p className="price">$8<span>/hr</span></p>
               <ul className="card-features-list">

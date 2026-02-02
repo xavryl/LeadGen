@@ -21,17 +21,24 @@ const Header = ({ onOpenFAQ }) => {
     closeMobileMenu();
   };
 
-  // --- FORCE SCROLL FUNCTION ---
-  // This manually finds the section and scrolls to it
+  // --- FORCE SCROLL FUNCTION (Fixes the navigation issue) ---
   const handleNavClick = (e, targetId) => {
-    e.preventDefault(); // Prevent default anchor jump
-    closeMobileMenu();  // Close mobile menu if open
+    e.preventDefault(); // Stop the URL from just changing
+    closeMobileMenu();  // Close mobile menu
     
     const section = document.getElementById(targetId);
     if (section) {
-      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Offset for fixed header (approx 80px)
+      const headerOffset = 80;
+      const elementPosition = section.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
     } else {
-      console.warn(`Section #${targetId} not found!`);
+      console.warn(`Section #${targetId} not found.`);
     }
   };
 

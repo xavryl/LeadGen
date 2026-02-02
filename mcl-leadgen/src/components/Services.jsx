@@ -12,7 +12,7 @@ const servicesData = [
     desc: "We verify every data point to give you direct access to decision-makers. Our lists are hand-curated to ensure 99% deliverability.",
     stat: "Lead Research",
     img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000",
-    hasModal: false
+    hasModal: false // Goes to external link
   },
   {
     id: 1,
@@ -21,7 +21,9 @@ const servicesData = [
     desc: "We architect the entire journey so you stop losing customers. From the first ad click to the final checkout, we optimize every step.",
     stat: "Sales Funnels",
     img: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=1000",
-    hasModal: false
+    hasModal: true, // ENABLED MODAL
+    modalLabel: "Tell us about your Sales Funnel needs",
+    modalPlaceholder: "Please describe your current funnel challenges, your target audience, existing traffic sources (Ads, SEO, etc.), and your conversion goals. We'll outline a strategy to optimize your customer journey."
   },
   {
     id: 2,
@@ -32,7 +34,7 @@ const servicesData = [
     img: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=1000",
     hasModal: true,
     modalLabel: "Tell us about your email marketing needs",
-    modalPlaceholder: "Please describe your email marketing goals, the type of campaigns you want (newsletters, promotions, lead nurturing, etc.), frequency, tools or platforms you prefer (Mailchimp, HubSpot, etc.), and any specific deadlines or instructions. We’ll get in touch via email if we can help."
+    modalPlaceholder: "Please describe your email marketing goals, the type of campaigns you want (newsletters, promotions, lead nurturing, etc.), frequency, tools or platforms you prefer (Mailchimp, HubSpot, etc.), and any specific deadlines or instructions."
   },
   {
     id: 3,
@@ -43,7 +45,7 @@ const servicesData = [
     img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1000",
     hasModal: true,
     modalLabel: "Tell us about your cold calling needs",
-    modalPlaceholder: "Please describe your cold calling goals, target audience, preferred script or approach, expected call volume, schedule, and any special instructions or requirements. We’ll get in touch via email if we can help."
+    modalPlaceholder: "Please describe your cold calling goals, target audience, preferred script or approach, expected call volume, schedule, and any special instructions or requirements."
   },
   {
     id: 4,
@@ -54,7 +56,7 @@ const servicesData = [
     img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1000",
     hasModal: true,
     modalLabel: "Tell us about your VA Needs/Requirements",
-    modalPlaceholder: "Please describe the tasks you need help with, your preferred hours or schedule, any specific skills or tools required, and any deadlines or special instructions. We’ll get in touch via email if we can help."
+    modalPlaceholder: "Please describe the tasks you need help with, your preferred hours or schedule, any specific skills or tools required, and any deadlines or special instructions."
   }
 ];
 
@@ -80,20 +82,12 @@ const Services = () => {
   const handleCtaClick = (e, service) => {
     e.preventDefault();
 
-    // 1. Sales Funnels (ID: 1) -> Scroll to Contact Section
-    if (service.id === 1) {
-      const contactSection = document.getElementById('contact');
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: 'smooth' });
-      }
-    } 
-    // 2. Services with specific Modals (Email, Cold Call, VA)
-    else if (service.hasModal) {
+    // If service has a modal enabled, open it
+    if (service.hasModal) {
       setSelectedService(service);
       setIsModalOpen(true);
-    } 
-    // 3. Lead Research -> External Link
-    else {
+    } else {
+      // Otherwise, open external link (Lead Research)
       window.open("https://exclusive.mclleads.com", "_blank");
     }
   };

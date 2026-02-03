@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
-import { FaCheckCircle } from 'react-icons/fa'; // Import check icon for success state
+import { FaCheckCircle } from 'react-icons/fa';
 
 // Component Imports
 import Header from './components/Layout/Header';
@@ -23,7 +23,7 @@ import './App.css';
 function App() {
   // --- STATE MANAGEMENT ---
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isFAQOpen, setIsFAQOpen] = useState(false);
+  const [isFAQOpen, setIsFAQOpen] = useState(false); // Keeps the FAQ logic active
   
   // Form State
   const [formData, setFormData] = useState({
@@ -34,7 +34,7 @@ function App() {
     website: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
+  const [submitStatus, setSubmitStatus] = useState(null);
 
   // --- HANDLERS ---
 
@@ -42,16 +42,13 @@ function App() {
   
   const closeModal = () => {
     setIsModalOpen(false);
-    // Optional: Reset status after a delay so it's fresh next time
     setTimeout(() => setSubmitStatus(null), 300); 
   };
 
-  // Handle Input Changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle Form Submission
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -74,7 +71,6 @@ function App() {
         console.log('SUCCESS!', response.status, response.text);
         setSubmitStatus('success');
         setIsSubmitting(false);
-        // Clear form
         setFormData({ fullName: '', email: '', jobTitle: '', companyName: '', website: '' });
       }, (err) => {
         console.log('FAILED...', err);
@@ -85,25 +81,55 @@ function App() {
 
   return (
     <div className="app">
-      {/* Pass toggle function to Header so Navbar button works */}
+      {/* Header controls the FAQ state */}
       <Header onOpenFAQ={() => setIsFAQOpen(true)} />
       
       <main>
-        {/* Pass openModal to Hero so the 'Get Free Sample' button works */}
-        <Hero onOpenModal={openModal} />
-        <Services />
-        <Pricing /> 
-        <About />
-        <Process />
-        <WhyChooseUs />
-        <Testimonials />
-        <Careers />
-        <Contact />
+        {/* CRITICAL: Wrappers added to match App.css 100vh rules */}
+        
+        <section id="home">
+          <Hero onOpenModal={openModal} />
+        </section>
+
+        <section id="services">
+          <Services />
+        </section>
+
+        <section id="pricing">
+          <Pricing />
+        </section>
+
+        <section id="about">
+          <About />
+        </section>
+
+        <section id="process">
+          <Process />
+        </section>
+
+        <section id="benefits">
+          <WhyChooseUs />
+        </section>
+
+        <section id="testimonials">
+          <Testimonials />
+        </section>
+
+        <section id="careers">
+          <Careers />
+        </section>
+
+        <section id="contact">
+          <Contact />
+        </section>
       </main>
 
-      <Footer />
-      
-      {/* FAQ Widget Controlled State */}
+      <section id="footer">
+        <Footer />
+      </section>
+
+      {/* FAQ Widget is rendered so Header button works, 
+          but the internal floating button is hidden via CSS/Component change */}
       <FAQWidget isOpen={isFAQOpen} onToggle={setIsFAQOpen} />
 
       {/* --- BANKRUPTCY DAILY BULLETIN MODAL --- */}

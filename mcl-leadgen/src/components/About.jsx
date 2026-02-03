@@ -75,7 +75,7 @@ const About = () => {
 
           {/* ACTIONS AREA: Button + Stats Badge */}
           <div className="about-actions">
-            <a href="#contact" className="btn-about-primary">Meet The Team</a>
+            <a href="https://www.upwork.com/agencies/655437511724298240/" target="_blank" className="btn-about-primary">Meet The Team</a>
             
             {/* STAT MOVED HERE */}
             <div className="stat-badge">

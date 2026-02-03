@@ -1,30 +1,76 @@
-/* Pricing.css */
+/* =========================================
+   1. SECTION BASE (Full Screen)
+   ========================================= */
+.pricing-section {
+  /* --- FULL SCREEN LOGIC --- */
+  width: 100%;
+  height: 100vh;      /* Force exactly screen height */
+  min-height: 100vh;
+  padding: 0;         /* Remove vertical padding */
+  
+  /* Center Content */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-/* SECTION & GRID */
-.pricing-section { background-color: #0f172a; padding: 100px 0; color: white; text-align: center; }
-.pricing-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-.pricing-grid { 
-  display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-  gap: 30px; 
-  margin-top: 40px; 
-  /* This ensures all cards are equal height */
-  align-items: stretch; 
+  background-color: #0f172a; 
+  color: white; 
+  text-align: center;
+  position: relative;
+  overflow: hidden; /* No scroll bars */
 }
 
-/* CARDS */
+.pricing-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  
+  /* Ensure container takes available height for vertical flex distribution */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.section-tag { 
+  color: #ffc107; 
+  font-weight: 800; 
+  letter-spacing: 2px; 
+  font-size: 2rem; 
+  display: block; 
+  margin-bottom: 20px; /* Reduced margin */
+}
+
+/* =========================================
+   2. PRICING GRID
+   ========================================= */
+.pricing-grid { 
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr); /* Force 3 columns */
+  gap: 30px; 
+  width: 100%;
+  margin-top: 20px; /* Reduced from 40px */
+}
+
+/* =========================================
+   3. CARD DESIGN (Flexible Height)
+   ========================================= */
 .pricing-card { 
   background: rgba(255, 255, 255, 0.03); 
   border: 1px solid rgba(255, 255, 255, 0.1); 
-  padding: 40px; 
-  border-radius: 24px; 
+  padding: 30px; /* Reduced padding */
+  border-radius: 20px; 
   
-  /* CRITICAL: Flexbox Layout forces buttons to bottom */
+  /* Flexbox Layout forces buttons to bottom */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  
+  /* Allow card to fill height but not overflow screen */
   height: 100%;
+  max-height: 65vh; /* Prevents card from going off screen */
   box-sizing: border-box;
 }
 
@@ -34,66 +80,71 @@
 }
 
 /* CONTENT STYLES */
-.plan-num { display: block; color: #ffc107; font-size: 0.9rem; font-weight: 800; margin-bottom: 10px; letter-spacing: 1px; }
-.pricing-card h3 { margin: 0 0 10px 0; font-size: 1.5rem; }
+.plan-num { 
+  display: block; color: #ffc107; font-size: 0.85rem; 
+  font-weight: 800; margin-bottom: 5px; letter-spacing: 1px; 
+}
 
-.price { font-size: 3.5rem; font-weight: 800; margin: 20px 0; color: white; }
-.price span { font-size: 1rem; color: #94a3b8; font-weight: 400; }
+.pricing-card h3 { 
+  margin: 0 0 5px 0; font-size: 1.4rem; 
+}
 
+.price { 
+  font-size: 3rem; /* Slightly smaller */
+  font-weight: 800; 
+  margin: 15px 0; 
+  color: white; 
+}
+.price span { font-size: 0.9rem; color: #94a3b8; font-weight: 400; }
+
+/* Features List - Scrollable if too many items */
 .card-features-list { 
   text-align: left; 
   list-style: none; 
   padding: 0; 
-  margin: 0 0 30px 0; 
+  margin: 0 0 20px 0; 
   color: #cbd5e1; 
-  font-size: 0.95rem; 
-  line-height: 1.6;
-  flex-grow: 1; /* Consumes space to push button down */
+  font-size: 0.9rem; 
+  line-height: 1.5;
+  flex-grow: 1; 
+  
+  /* If list is long, scroll INSIDE the card, not the page */
+  overflow-y: auto; 
+  padding-right: 5px; /* Space for scrollbar */
 }
 
-.card-features-list li { margin-bottom: 12px; position: relative; padding-left: 20px; }
+.card-features-list::-webkit-scrollbar { width: 4px; }
+.card-features-list::-webkit-scrollbar-thumb { background: #334155; border-radius: 2px; }
+
+.card-features-list li { margin-bottom: 8px; position: relative; padding-left: 18px; }
 .card-features-list li::before { content: "•"; color: #ffc107; position: absolute; left: 0; font-weight: bold; }
 
-/* --- UNIQUE BUTTON STYLES --- */
-
-/* Shared Base Styles for all buttons */
+/* =========================================
+   4. BUTTON STYLES
+   ========================================= */
 .btn-base {
-  padding: 16px 30px; 
+  padding: 14px 20px; 
   border-radius: 50px; 
   font-weight: 800; 
   text-decoration: none; 
   cursor: pointer; 
   border: none; 
   display: block; 
-
   text-align: center;
-  margin-top: auto; /* Force to bottom */
+  margin-top: auto; 
   transition: transform 0.2s;
+  width: 100%;
+  font-size: 0.95rem;
 }
 .btn-base:hover { transform: scale(1.03); }
 
-/* Button 1: Newsletter */
-.btn-newsletter {
-  background: white; 
-  color: #133c55; 
+.btn-newsletter { background: white; color: #133c55; }
+.btn-fixed { background: #ffc107; color: #133c55; }
+.btn-hourly { background: white; color: #133c55; }
 
-}
-
-/* Button 2: Fixed List (Gold) */
-.btn-fixed {
-  background: #ffc107; 
-  color: #133c55; 
-}
-
-/* Button 3: Hourly */
-.btn-hourly {
-  background: white; 
-  color: #133c55; 
-}
-
-.section-tag { color: #ffc107; font-weight: 800; letter-spacing: 2px; font-size: 2.4rem; display: block; margin-bottom: 10px; }
-
-/* MODAL STYLES (Unchanged) */
+/* =========================================
+   5. MODAL STYLES (Preserved)
+   ========================================= */
 .modal-overlay { position: fixed; inset: 0; background: rgba(10, 25, 41, 0.95); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; z-index: 9999; padding: 15px; }
 .modal-content { background-color: #133c55 !important; width: 100%; max-width: 600px; max-height: 95vh; overflow-y: auto; border-radius: 20px; position: relative; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 30px 60px -15px rgba(0,0,0,0.8); color: white; }
 .close-x { position: absolute; top: 15px; right: 15px; background: none; border: none; color: white; font-size: 1.8rem; cursor: pointer; z-index: 100; opacity: 0.7; }
@@ -116,7 +167,21 @@
 .stepper button { width: 30px; height: 30px; border-radius: 50%; font-weight: bold; cursor: pointer; background: white; border: none; color: #133c55; }
 .stepper span { font-size: 1.3rem; font-weight: bold; width: 35px; text-align: center; color: white; }
 
-@media (max-width: 600px) {
+/* =========================================
+   6. RESPONSIVE
+   ========================================= */
+@media (max-width: 900px) {
+  .pricing-section {
+    height: auto;
+    padding: 80px 0;
+  }
+  
+  .pricing-grid { 
+    grid-template-columns: 1fr; /* Stack on mobile */
+  }
+  
   .simple-form .row { flex-direction: column; gap: 15px; }
-  .pricing-grid { grid-template-columns: 1fr; }
+  
+  /* Reset height constraint on mobile */
+  .pricing-card { max-height: none; }
 }

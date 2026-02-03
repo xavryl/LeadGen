@@ -1,46 +1,104 @@
 /* =========================================
-   1. SECTION BASE (Light Gray)
+   1. SECTION BASE (White with Floating Shapes)
    ========================================= */
 .join-section {
-  padding: 100px 0;
-  background-color: #f8fafc; /* Clean Light Gray */
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  padding: 0;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  /* Pure White Background */
+  background-color: #ffffff; 
   position: relative;
   text-align: center;
+  overflow: hidden;
+}
+
+/* --- FLOATING SHAPES --- */
+.career-floating-shapes {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 0; /* Behind content */
+  pointer-events: none;
+}
+
+.c-shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px); /* Soft blob effect */
+  opacity: 0.6;
+  animation: floatCareer 15s infinite alternate ease-in-out;
+}
+
+/* Shape 1: Soft Gold (Top Left) */
+.shape-1 {
+  width: 300px; height: 300px;
+  background: rgba(255, 193, 7, 0.15);
+  top: -50px; left: -50px;
+}
+
+/* Shape 2: Soft Navy (Bottom Right) */
+.shape-2 {
+  width: 400px; height: 400px;
+  background: rgba(19, 60, 85, 0.08);
+  bottom: -100px; right: -50px;
+  animation-duration: 20s;
+}
+
+/* Shape 3: Tiny Gold Accent (Middle Left) */
+.shape-3 {
+  width: 150px; height: 150px;
+  background: rgba(255, 193, 7, 0.1);
+  top: 40%; left: 10%;
+  animation-duration: 12s;
+}
+
+@keyframes floatCareer {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(30px, 40px) rotate(10deg); }
 }
 
 .join-container {
+  width: 100%;
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 20px;
+  position: relative;
+  z-index: 2; /* Ensure content sits above shapes */
 }
 
 /* =========================================
    2. HEADER STYLING
    ========================================= */
 .join-tag {
-  color: #ffc107; /* Gold */
+  color: #ffc107; 
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-size: 2rem;
+  font-size: 1.5rem;
   display: block;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .join-title {
-  font-size: 3rem;
-  color: #133c55; /* Navy */
+  font-size: 2.5rem;
+  color: #133c55; /* Navy Text on White BG */
   font-weight: 800;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
   line-height: 1.2;
 }
 
 .join-desc {
-  font-size: 1.15rem;
-  color: #64748b;
-  line-height: 1.7;
+  font-size: 1rem;
+  color: #64748b; /* Slate Gray */
+  line-height: 1.6;
   max-width: 700px;
-  margin: 0 auto 60px;
+  margin: 0 auto 40px;
 }
 
 /* =========================================
@@ -49,63 +107,67 @@
 .join-highlights {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  margin-bottom: 60px;
+  gap: 25px;
+  margin-bottom: 40px;
 }
 
 /* CARD DESIGN */
 .highlight-card {
   background: white;
-  padding: 40px 30px;
+  padding: 30px 20px;
   border-radius: 20px;
-  border: 1px solid #e2e8f0;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  
+  /* Light border for structure */
+  border: 1px solid #e2e8f0; 
+  
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
   overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
 }
 
 .highlight-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(19, 60, 85, 0.08);
-  border-color: rgba(255, 193, 7, 0.3); /* Subtle Gold Border on Hover */
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(19, 60, 85, 0.08); /* Navy shadow */
+  border-color: #ffc107; /* Gold border */
 }
 
 /* ICON STYLING */
 .highlight-icon-wrapper {
-  width: 70px;
-  height: 70px;
-  background: #f1f5f9; /* Light Gray Circle */
+  width: 65px;
+  height: 65px;
+  background: #f8fafc; /* Very light gray */
   color: #133c55;      /* Navy Icon */
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8rem;
-  margin-bottom: 25px;
+  font-size: 1.6rem;
+  margin-bottom: 15px;
   transition: all 0.3s ease;
 }
 
 .highlight-card:hover .highlight-icon-wrapper {
   background: #133c55; 
-  color: #ffc107; /* Icon turns Gold */
+  color: #ffc107; 
   transform: scale(1.1);
 }
 
 /* CARD TEXT */
 .highlight-card h3 {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   color: #0f172a;
   font-weight: 700;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .highlight-card p {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #64748b;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 /* =========================================
@@ -115,38 +177,39 @@
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  background: #ffc107; /* Gold Background */
-  color: #133c55;      /* Navy Text */
-  padding: 18px 45px;
+  background: #133c55; /* Navy */
+  color: white;
+  padding: 16px 45px;
   border-radius: 50px;
   font-weight: 800;
   text-decoration: none;
-  font-size: 1.1rem;
+  font-size: 1rem;
   transition: all 0.3s ease;
-  box-shadow: 0 10px 20px rgba(255, 193, 7, 0.25);
+  box-shadow: 0 10px 20px rgba(19, 60, 85, 0.2);
 }
 
 .btn-apply:hover {
-  background: #133c55; /* Navy Background */
-  color: #ffc107;      /* Gold Text */
+  background: #ffc107; /* Gold */
+  color: #133c55;      /* Navy Text */
   transform: translateY(-3px);
-  box-shadow: 0 15px 30px rgba(19, 60, 85, 0.3);
+  box-shadow: 0 15px 30px rgba(255, 193, 7, 0.3);
 }
 
 /* =========================================
    5. RESPONSIVE
    ========================================= */
 @media (max-width: 900px) {
+  .join-section {
+    height: auto;
+    padding: 80px 0;
+  }
+
   .join-highlights {
-    grid-template-columns: 1fr; /* Stack vertically */
+    grid-template-columns: 1fr;
     gap: 20px;
   }
   
   .join-title {
     font-size: 2.2rem;
-  }
-  
-  .highlight-card {
-    padding: 30px;
   }
 }

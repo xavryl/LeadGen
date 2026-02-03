@@ -27,6 +27,14 @@ const Careers = () => {
   return (
     // CRITICAL: id="careers" allows the navbar to scroll here
     <section id="careers" className="join-section">
+      
+      {/* FLOATING BACKGROUND SHAPES */}
+      <div className="career-floating-shapes">
+        <div className="c-shape shape-1"></div>
+        <div className="c-shape shape-2"></div>
+        <div className="c-shape shape-3"></div>
+      </div>
+
       <div className="join-container">
         
         {/* HEADER CONTENT */}

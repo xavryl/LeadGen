@@ -90,14 +90,7 @@ const FAQWidget = ({ isOpen, onToggle }) => {
 
   return (
     <>
-      {/* TRIGGER BUTTON (Floating) */}
-      <button 
-        className={`faq-trigger-btn ${isOpen ? 'hide' : ''}`} 
-        onClick={toggleModal}
-        aria-label="Open FAQ"
-      >
-        <span className="faq-btn-text">FAQ</span>
-      </button>
+      {/* FLOATING TRIGGER BUTTON REMOVED - Modal triggers via Navbar only */}
 
       {/* MODAL BACKDROP & CONTAINER */}
       <div className={`faq-modal-backdrop ${isOpen ? 'open' : ''}`} onClick={toggleModal}>

@@ -54,7 +54,7 @@ const About = () => {
               <FaCheckDouble className="grid-icon" />
               <div>
                 <h4>99% Verified</h4>
-                <p>Zero bounce rates.</p>
+                <p>1-2% bounce rates.</p>
               </div>
             </div>
             <div className="grid-item">
